@@ -29,7 +29,7 @@ Replace all unaccented notes (0s) with double strokes (diddles). This adds textu
 
 #### 4. **Play Accents as 32nd Notes**
 
-Convert all accented notes into two 32nd notes instead of single 16th notes. This creates a rhythmic variation and develops speed control.
+Play all accented notes (1s) as 32nd notes while keeping unaccented notes (0s) as 16th notes. This creates rhythmic variation and develops speed control.
 
 #### 5. **Play Accents with Herta**
 
@@ -42,6 +42,10 @@ Add a grace note (flam) before each accented notes, enhancing the accent clarity
 #### 7. **Linear Pattern - Accent on Hand, Non-accent on Foot**
 
 Play accented notes (1s) with hand strokes and unaccented notes (0s) with foot pedal. This develops linear independence and coordination between hands and feet, creating a continuous flowing pattern without hand-based dynamics variation.
+
+#### 8. **Doubled Note Value (32nd Notes)**
+
+Practice these exercises with 32nd notes instead of 16th notes—doubling your note subdivision while keeping the accent pattern identical. This is an excellent technique for speed development at manageable metronome tempos.
 
 ---
 

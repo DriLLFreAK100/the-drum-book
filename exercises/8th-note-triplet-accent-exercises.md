@@ -27,9 +27,9 @@ Play all notes with alternating right and left hand without dynamics variation. 
 
 Replace all unaccented notes (0s) with double strokes. This adds texture and challenges coordination while maintaining the accent structure.
 
-#### 4. **Play Accents as 32nd Notes**
+#### 4. **Play Accents as 16th Notes**
 
-Convert all accented notes into two 16th notes instead of single 8th notes. This creates a rhythmic variation and develops speed control.
+Play all accented notes (1s) as 16th notes while keeping unaccented notes (0s) as 8th-note triplets. This creates rhythmic variation and develops speed control.
 
 #### 5. **Play Accents with Herta**
 
@@ -42,6 +42,10 @@ Add a grace note (flam) before each accented notes, enhancing the accent clarity
 #### 7. **Linear Pattern - Accent on Hand, Non-accent on Foot**
 
 Play accented notes (1s) with hand strokes and unaccented notes (0s) with foot pedal. This develops linear independence and coordination between hands and feet.
+
+#### 8. **Doubled Note Value (16th-Note Triplets)**
+
+Practice these exercises with 16th-note triplets instead of 8th-note triplets—doubling your note subdivision while keeping the accent pattern identical. This is an excellent technique for speed development at manageable metronome tempos.
 
 ---
 
