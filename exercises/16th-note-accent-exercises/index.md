@@ -49,6 +49,8 @@ Practice these exercises with 32nd notes instead of 16th notes—doubling your n
 
 ---
 
+<!-- mxl: time-sig=4/4, note-type=16th -->
+
 ## Single Accent Exercise (32 Bars)
 
 ```
@@ -96,6 +98,8 @@ Bar 32: 0001 0100 0010 1000
 **Focus**: Single accents randomly distributed across 16 notes for positioning control.
 
 ---
+
+<!-- mxl: time-sig=4/4, note-type=16th -->
 
 ## Double Accent Exercise (32 Bars)
 
@@ -145,6 +149,8 @@ Bar 32: 0101 0011 1010 1100
 
 ---
 
+<!-- mxl: time-sig=4/4, note-type=16th -->
+
 ## Triple Accent Exercise (32 Bars)
 
 ```
@@ -193,6 +199,8 @@ Bar 32: 1101 1011 1110 0111
 
 ---
 
+<!-- mxl: time-sig=4/4, note-type=16th -->
+
 ## Mixed Accents Exercise 1 (32 Bars)
 
 ```
@@ -239,6 +247,8 @@ Bar 32: 0010 1001 0110 1100
 
 ---
 
+<!-- mxl: time-sig=4/4, note-type=16th -->
+
 ## Mixed Accents Exercise 2 (32 Bars)
 
 ```
@@ -284,6 +294,8 @@ Bar 32: 0010 1001 0101 1100
 ```
 
 ---
+
+<!-- mxl: time-sig=4/4, note-type=16th -->
 
 ## Mixed Accents Exercise 3 (32 Bars)
 

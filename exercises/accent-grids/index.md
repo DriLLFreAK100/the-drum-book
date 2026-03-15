@@ -1,3 +1,5 @@
+<!-- mxl: time-sig=4/4, note-type=16th -->
+
 # 16th Note
 
 ---
@@ -74,6 +76,8 @@ Bar 29: 0001 1011 1001 0101
 Bar 30: 1100 1010 0011 1110
 Bar 31: 0111 1111 1000 1011
 Bar 32: 1001 0110 1101 0001
+
+<!-- mxl: time-sig=12/8, note-type=eighth -->
 
 # 8th note triplet
 
