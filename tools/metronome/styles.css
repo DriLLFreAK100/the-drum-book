@@ -1,0 +1,465 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #555;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Tempo Section */
+.tempo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.knob-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.knob {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ffffff, #e0e0e0);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        inset 0 2px 5px rgba(255, 255, 255, 0.5),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    user-select: none;
+    transition: box-shadow 0.2s;
+}
+
+.knob-inner {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #f5f5f5, #d0d0d0);
+    position: relative;
+}
+
+.knob-marker {
+    width: 8px;
+    height: 45px;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    border-radius: 4px;
+    position: absolute;
+    top: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.knob:active {
+    cursor: grabbing;
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.3),
+        inset 0 2px 5px rgba(255, 255, 255, 0.5),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tempo-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.bpm-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.bpm-label {
+    font-size: 0.9em;
+    color: #999;
+    letter-spacing: 1px;
+}
+
+/* Time Signature Section */
+.time-sig-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.time-sig-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+}
+
+.time-sig-btn {
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    color: #555;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.time-sig-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.time-sig-btn.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-color: transparent;
+}
+
+/* Sound Palette Section */
+.sound-palette-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sound-palette-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px;
+}
+
+.sound-palette-btn {
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    color: #555;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.sound-palette-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.sound-palette-btn.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-color: transparent;
+}
+.pitch-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pitch-control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pitch-control input[type="range"] {
+    flex: 1;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.pitch-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #667eea;
+}
+
+.pitch-control input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #667eea;
+}
+
+.pitch-value {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #667eea;
+    min-width: 50px;
+}
+
+/* Beat Tones Section */
+.beat-tones-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.beat-tones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+    gap: 8px;
+}
+
+.beat-tone-btn {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    color: #555;
+    font-size: 0.85em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 4px;
+}
+
+.beat-tone-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.beat-tone-btn.accent {
+    border-color: #ff6b6b;
+}
+
+.beat-tone-btn.set {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-color: transparent;
+}
+
+.beat-tone-btn.muted {
+    background: #f5f5f5;
+    color: #999;
+    opacity: 0.6;
+    border-color: #ccc;
+    position: relative;
+}
+
+.beat-tone-btn.muted::after {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 2px;
+    background: #999;
+    top: 50%;
+    left: 15%;
+    transform: translateY(-50%);
+}
+
+.beat-tones-hint {
+    font-size: 0.8em;
+    color: #999;
+    text-align: center;
+}
+
+/* Playback Section */
+.playback-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.play-btn,
+.stop-btn {
+    padding: 16px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.play-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.play-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+}
+
+.play-btn:active {
+    transform: translateY(0);
+}
+
+.stop-btn {
+    background: #f0f0f0;
+    color: #555;
+    border: 2px solid #ddd;
+}
+
+.stop-btn:hover {
+    background: #e0e0e0;
+    border-color: #999;
+}
+
+.stop-btn:active {
+    transform: scale(0.98);
+}
+
+.keyboard-hint {
+    grid-column: 1 / -1;
+    font-size: 0.8em;
+    color: #999;
+    text-align: center;
+    margin: -10px 0 0 0;
+}
+
+/* Beat Indicator */
+.beat-indicator {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.beat-display {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 50px;
+    align-items: center;
+}
+
+.beat-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    transition: all 0.1s;
+}
+
+.beat-dot.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
+    transform: scale(1.3);
+}
+
+.beat-dot.accent {
+    background: #ff6b6b;
+    width: 28px;
+    height: 28px;
+}
+
+.beat-dot.accent.active {
+    background: #ff6b6b;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
+    transform: scale(1.2);
+}
+
+.beat-dot.muted {
+    background: #ddd;
+    opacity: 0.4;
+    position: relative;
+}
+
+.beat-dot.muted::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    background: #999;
+    top: 50%;
+    left: 20%;
+    transform: translateY(-50%);
+}
+
+.beat-label {
+    font-size: 0.9em;
+    color: #999;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+
+    .knob {
+        width: 120px;
+        height: 120px;
+    }
+
+    .knob-inner {
+        width: 110px;
+        height: 110px;
+    }
+
+    .bpm-value {
+        font-size: 2em;
+    }
+
+    .time-sig-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .tone-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

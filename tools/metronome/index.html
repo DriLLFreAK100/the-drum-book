@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drum Metronome</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Drum Metronome</h1>
+
+      <div class="control-panel">
+        <!-- Tempo Control -->
+        <div class="tempo-section">
+          <h2>Tempo</h2>
+          <div class="knob-container">
+            <div class="knob" id="tempoKnob">
+              <div class="knob-inner"></div>
+              <div class="knob-marker"></div>
+            </div>
+          </div>
+          <div class="tempo-display">
+            <span class="bpm-value" id="bpmValue">120</span>
+            <span class="bpm-label">BPM</span>
+          </div>
+        </div>
+
+        <!-- Time Signature Control -->
+        <div class="time-sig-section">
+          <h2>Time Signature</h2>
+          <div class="time-sig-buttons">
+            <button class="time-sig-btn active" data-sig="4/4">4/4</button>
+            <button class="time-sig-btn" data-sig="3/4">3/4</button>
+            <button class="time-sig-btn" data-sig="5/4">5/4</button>
+            <button class="time-sig-btn" data-sig="12/8">12/8</button>
+            <button class="time-sig-btn" data-sig="7/8">7/8</button>
+            <button class="time-sig-btn" data-sig="9/8">9/8</button>
+            <button class="time-sig-btn" data-sig="15/16">15/16</button>
+          </div>
+        </div>
+
+        <!-- Sound Palette -->
+        <div class="sound-palette-section">
+          <h2>Sound Palette</h2>
+          <div class="sound-palette-buttons">
+            <button class="sound-palette-btn active" data-palette="woodenblock">🪵 Wooden Block</button>
+            <button class="sound-palette-btn" data-palette="cowbell">🔔 Cowbell</button>
+            <button class="sound-palette-btn" data-palette="metronome">⏱️ Metronome</button>
+            <button class="sound-palette-btn" data-palette="beep">📱 Beep</button>
+          </div>
+        </div>
+
+        <!-- Pitch Control -->
+        <div class="pitch-section">
+          <h2>Pitch (Hz)</h2>
+          <div class="pitch-control">
+            <input type="range" id="pitchSlider" min="150" max="400" value="250" />
+            <span class="pitch-value" id="pitchValue">250</span>
+          </div>
+        </div>
+
+        <!-- Beat Tone Customization -->
+        <div class="beat-tones-section">
+          <h2>Beat Tones</h2>
+          <div class="beat-tones-grid" id="beatTonesGrid"></div>
+          <p class="beat-tones-hint">Click to set tone | Right-click to mute/unmute</p>
+        </div>
+
+        <!-- Play/Stop -->
+        <div class="playback-section">
+          <button class="play-btn" id="playBtn">▶ Start</button>
+          <button class="stop-btn" id="stopBtn">⏹ Stop</button>
+          <p class="keyboard-hint">Press SPACE to toggle</p>
+        </div>
+      </div>
+
+      <!-- Beat Indicator -->
+      <div class="beat-indicator">
+        <div class="beat-display" id="beatDisplay"></div>
+        <p class="beat-label" id="beatLabel">Ready</p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
