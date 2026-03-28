@@ -21,10 +21,25 @@ WORKSPACE_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..', '..'))
 # Paths relative to workspace root
 EXERCISES_DIR = os.path.join(WORKSPACE_ROOT, 'exercises')
 REF_DIR = os.path.join(WORKSPACE_ROOT, '.ref')
+MUSICS_DIR = os.path.join(WORKSPACE_ROOT, '.ref', 'musics')
 
 # Path prefix used by the hub (relative to tools/hub/)
 HUB_EXERCISES_PREFIX = '../../exercises'
 HUB_REF_PREFIX = '../../.ref'
+HUB_MUSICS_PREFIX = '../../.ref/musics'
+
+AUDIO_EXTENSIONS = {'.wav', '.mp3', '.ogg', '.flac', '.m4a', '.aac'}
+
+STEM_ICONS = {
+    'drums': '🥁', 'drum': '🥁',
+    'bass': '🎸',
+    'piano': '🎹', 'keys': '🎹', 'keyboard': '🎹', 'synth': '🎹',
+    'vocals': '🎤', 'vocal': '🎤', 'voice': '🎤', 'vox': '🎤',
+    'guitar': '🎸', 'gtr': '🎸',
+    'brass': '🎺', 'horns': '🎺',
+    'strings': '🎻',
+    'other': '🎵', 'misc': '🎵',
+}
 
 
 def folder_to_display_name(folder_name: str) -> str:
@@ -101,10 +116,53 @@ def scan_ref_books() -> list:
     return books
 
 
+def scan_musics() -> list:
+    tunes = []
+    if not os.path.isdir(MUSICS_DIR):
+        return tunes
+
+    for folder in sorted(os.listdir(MUSICS_DIR)):
+        if folder.startswith('.'):
+            continue
+        folder_path = os.path.join(MUSICS_DIR, folder)
+        if not os.path.isdir(folder_path):
+            continue
+
+        stems = []
+        score = None
+
+        for file in sorted(os.listdir(folder_path), key=natural_sort_key):
+            if file.startswith('.') or file.startswith('_'):
+                continue
+            ext = os.path.splitext(file)[1].lower()
+            stem_name = os.path.splitext(file)[0]
+
+            if ext in AUDIO_EXTENSIONS:
+                icon = STEM_ICONS.get(stem_name.lower(), '📀')
+                stems.append({
+                    'name': stem_name,
+                    'label': stem_name.capitalize(),
+                    'icon': icon,
+                    'path': f'{HUB_MUSICS_PREFIX}/{folder}/{file}',
+                })
+            elif ext == '.musicxml':
+                score = f'{HUB_MUSICS_PREFIX}/{folder}/{file}'
+
+        if stems or score:
+            tunes.append({
+                'name': folder,
+                'stems': stems,
+                'score': score,
+            })
+
+    return tunes
+
+
 def main():
     manifest = {
         'exercises': scan_exercises(),
         'refBooks': scan_ref_books(),
+        'musics': scan_musics(),
     }
 
     # manifest.json — kept for reference / tooling
@@ -123,6 +181,7 @@ def main():
     print(f'manifest.json + manifest.js written to {SCRIPT_DIR}')
     print(f'  {len(manifest["exercises"])} exercise categorie(s)')
     print(f'  {len(manifest["refBooks"])} reference book(s)')
+    print(f'  {len(manifest["musics"])} tune(s)')
 
 
 if __name__ == '__main__':

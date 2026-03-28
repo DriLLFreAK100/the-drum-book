@@ -46,5 +46,91 @@ window.MANIFEST = {
       "name": "Charley Wilcoxon - The All American Drummer - 150 Rudimental Solos",
       "path": "../../.ref/books/Charley Wilcoxon - The All American Drummer - 150 Rudimental Solos.pdf"
     }
+  ],
+  "musics": [
+    {
+      "name": "Al Jarreau - We're In This Love Together",
+      "stems": [
+        {
+          "name": "Al Jarreau - We're In This Love Together",
+          "label": "Al jarreau - we're in this love together",
+          "icon": "📀",
+          "path": "../../.ref/musics/Al Jarreau - We're In This Love Together/Al Jarreau - We're In This Love Together.mp3"
+        },
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/Al Jarreau - We're In This Love Together/bass.wav"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/Al Jarreau - We're In This Love Together/drums.wav"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/Al Jarreau - We're In This Love Together/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/Al Jarreau - We're In This Love Together/piano.wav"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/Al Jarreau - We're In This Love Together/vocals.wav"
+        }
+      ],
+      "score": "../../.ref/musics/Al Jarreau - We're In This Love Together/score.musicxml"
+    },
+    {
+      "name": "Alfa Mist - Brian",
+      "stems": [
+        {
+          "name": "Alfa Mist - Brian",
+          "label": "Alfa mist - brian",
+          "icon": "📀",
+          "path": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.mp3"
+        },
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/Alfa Mist - Brian/bass.wav"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/Alfa Mist - Brian/drums.wav"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/Alfa Mist - Brian/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/Alfa Mist - Brian/piano.wav"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/Alfa Mist - Brian/vocals.wav"
+        }
+      ],
+      "score": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.musicxml"
+    }
   ]
 };

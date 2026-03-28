@@ -7,6 +7,17 @@ const OpenSheetMusicDisplay = window.opensheetmusicdisplay?.OpenSheetMusicDispla
 let currentZoom = 100;
 let osmd = null;
 
+// ─── Music Player State ───────────────────────────────────────────────────────
+// Uses HTMLAudioElement per stem — no fetch needed, works on file:// protocol.
+const stemAudios = {};    // label → HTMLAudioElement
+const stemEnabled = {};   // label → boolean
+let playerDuration = 0;
+let isPlaying = false;
+let masterVolume = 1;
+let rafId = null;
+let leaderLabel = null;   // label of the primary audio element used for time tracking
+// ─────────────────────────────────────────────────────────────────────────────
+
 // Manifest is loaded dynamically from manifest.json at startup.
 // Run tools/hub/generate-manifest.py whenever exercises or .ref books change.
 
@@ -20,6 +31,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     populateExercises(manifest);
     setupZoomControls();
     setupSearch();
+    setupPlayer();
+    setupRightTabs();
   } catch (error) {
     container.innerHTML = `
       <div style="padding: 40px; text-align: center; color: #d32f2f;">
@@ -124,6 +137,35 @@ function populateExercises(manifest) {
   });
 
   exercisesList.appendChild(booksCategory);
+
+  // Tunes section
+  if (manifest.musics && manifest.musics.length > 0) {
+    const tunesDivider = document.createElement('div');
+    tunesDivider.className = 'section-divider';
+    tunesDivider.textContent = 'Tunes';
+    exercisesList.appendChild(tunesDivider);
+
+    const tunesCategory = document.createElement('div');
+    tunesCategory.className = 'exercise-category';
+
+    manifest.musics.forEach(tune => {
+      const item = document.createElement('div');
+      item.className = 'exercise-item tune-item';
+      item.textContent = tune.name;
+      item.dataset.name = tune.name;
+      item.dataset.type = 'tune';
+
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.exercise-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        loadTune(tune);
+      });
+
+      tunesCategory.appendChild(item);
+    });
+
+    exercisesList.appendChild(tunesCategory);
+  }
 }
 
 // Reload the sidebar with a fresh manifest (e.g. after files are added)
@@ -228,6 +270,7 @@ function setupZoomControls() {
 
 // Apply zoom level
 function applyZoom(zoomValue) {
+  if (!osmd) return;
   osmd.zoom = zoomValue;
   osmd.render();
 }
@@ -292,8 +335,254 @@ function setupSearch() {
   });
 }
 
+// ─── Right Panel Tab Switching ────────────────────────────────────────────────
+function setupRightTabs() {
+  document.querySelectorAll('.right-tab').forEach(btn => {
+    btn.addEventListener('click', () => switchRightTab(btn.dataset.tab));
+  });
+}
+
+function switchRightTab(tabName) {
+  document.querySelectorAll('.right-tab').forEach(t =>
+    t.classList.toggle('active', t.dataset.tab === tabName)
+  );
+  document.querySelectorAll('.right-tab-content').forEach(c =>
+    c.classList.toggle('active', c.id === tabName + 'Tab')
+  );
+}
+
+// ─── Music Player ─────────────────────────────────────────────────────────────
+function playerFormatTime(s) {
+  if (!isFinite(s) || s < 0) return '0:00';
+  const m = Math.floor(s / 60);
+  return `${m}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+}
+
+function loadTune(tune) {
+  // Switch right panel to player tab
+  switchRightTab('player');
+
+  // Show score in center if available, otherwise placeholder
+  if (tune.score) {
+    const encodedScore = tune.score.split('/').map(encodeURIComponent).join('/');
+    loadExercise(encodedScore, tune.name);
+  } else {
+    showCenterPlaceholder(tune.name);
+  }
+
+  // Stop and tear down previous playback
+  stopPlayback();
+  clearPlayerState();
+
+  const loadingEl = document.getElementById('playerLoading');
+  const tracksEl = document.getElementById('playerTracks');
+  const transportEl = document.getElementById('playerTransport');
+
+  tracksEl.innerHTML = '';
+  transportEl.classList.add('disabled');
+  loadingEl.style.display = 'block';
+
+  const stems = tune.stems || [];
+  if (stems.length === 0) {
+    loadingEl.textContent = 'No audio stems found.';
+    return;
+  }
+
+  let loadedCount = 0;
+  leaderLabel = stems[0].label;
+
+  stems.forEach(stem => {
+    const audio = new Audio();
+    audio.preload = 'auto';
+    audio.src = stem.path;
+    audio.volume = stemEnabled[stem.label] === false ? 0 : masterVolume;
+    stemAudios[stem.label] = audio;
+    stemEnabled[stem.label] = true;
+
+    const onReady = () => {
+      loadedCount++;
+      if (audio.duration > playerDuration) playerDuration = audio.duration;
+      tracksEl.appendChild(buildTrackToggle(stem));
+
+      if (loadedCount === stems.length || loadedCount === 1) {
+        // Enable transport as soon as at least one stem is ready
+        loadingEl.style.display = 'none';
+        const seekEl = document.getElementById('transportSeek');
+        seekEl.max = playerDuration > 0 ? playerDuration : 100;
+        seekEl.value = 0;
+        document.getElementById('transportDuration').textContent = playerFormatTime(playerDuration);
+        document.getElementById('transportCurrent').textContent = '0:00';
+        transportEl.classList.remove('disabled');
+      }
+    };
+
+    audio.addEventListener('loadedmetadata', onReady, { once: true });
+    audio.addEventListener('error', () => {
+      console.warn(`Could not load stem "${stem.label}"`);
+      loadedCount++;
+      if (loadedCount === stems.length) loadingEl.style.display = 'none';
+    }, { once: true });
+
+    // Wire ended event on leader
+    if (stem.label === leaderLabel) {
+      audio.addEventListener('ended', () => {
+        isPlaying = false;
+        seekAllTo(0);
+        updateSeekUI(0);
+        document.getElementById('playPauseBtn').textContent = '▶';
+        stopRAF();
+      });
+    }
+  });
+}
+
+function buildTrackToggle(stem) {
+  const el = document.createElement('div');
+  el.className = 'player-track active';
+  el.innerHTML = `
+    <span class="track-icon">${stem.icon}</span>
+    <span class="track-label">${stem.label}</span>
+    <button class="track-toggle-btn" title="Toggle track" aria-pressed="true">✓</button>
+  `;
+
+  const btn = el.querySelector('.track-toggle-btn');
+  btn.addEventListener('click', () => {
+    stemEnabled[stem.label] = !stemEnabled[stem.label];
+    const enabled = stemEnabled[stem.label];
+    const audio = stemAudios[stem.label];
+    if (audio) audio.volume = enabled ? masterVolume : 0;
+    el.classList.toggle('active', enabled);
+    btn.textContent = enabled ? '✓' : '✗';
+    btn.setAttribute('aria-pressed', String(enabled));
+  });
+
+  return el;
+}
+
+function seekAllTo(t) {
+  Object.values(stemAudios).forEach(a => { try { a.currentTime = t; } catch { } });
+}
+
+function startPlayback(t) {
+  const pos = t !== undefined ? Math.max(0, Math.min(t, playerDuration)) : getCurrentPosition();
+  seekAllTo(pos);
+  Object.entries(stemAudios).forEach(([label, audio]) => {
+    audio.volume = stemEnabled[label] ? masterVolume : 0;
+    audio.play().catch(() => { });
+  });
+  isPlaying = true;
+  document.getElementById('playPauseBtn').textContent = '⏸';
+  startRAF();
+}
+
+function pausePlayback() {
+  Object.values(stemAudios).forEach(a => a.pause());
+  isPlaying = false;
+  document.getElementById('playPauseBtn').textContent = '▶';
+  stopRAF();
+}
+
+function stopPlayback() {
+  Object.values(stemAudios).forEach(a => { a.pause(); try { a.currentTime = 0; } catch { } });
+  isPlaying = false;
+  stopRAF();
+}
+
+function clearPlayerState() {
+  // Detach all audio elements
+  Object.values(stemAudios).forEach(a => { a.pause(); a.src = ''; });
+  Object.keys(stemAudios).forEach(k => delete stemAudios[k]);
+  Object.keys(stemEnabled).forEach(k => delete stemEnabled[k]);
+  playerDuration = 0;
+  isPlaying = false;
+  leaderLabel = null;
+}
+
+function getCurrentPosition() {
+  const leader = leaderLabel && stemAudios[leaderLabel];
+  return leader ? leader.currentTime : 0;
+}
+
+function startRAF() {
+  stopRAF();
+  const tick = () => {
+    if (!isPlaying) return;
+    updateSeekUI(getCurrentPosition());
+    rafId = requestAnimationFrame(tick);
+  };
+  rafId = requestAnimationFrame(tick);
+}
+
+function stopRAF() {
+  if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+}
+
+function updateSeekUI(pos) {
+  document.getElementById('transportSeek').value = pos;
+  document.getElementById('transportCurrent').textContent = playerFormatTime(pos);
+}
+
+function setupPlayer() {
+  // Start in disabled state until a tune is loaded
+  document.getElementById('playerTransport').classList.add('disabled');
+
+  document.getElementById('playPauseBtn').addEventListener('click', () => {
+    if (Object.keys(stemAudios).length === 0) return;
+    isPlaying ? pausePlayback() : startPlayback();
+  });
+
+  document.getElementById('seekBackBtn').addEventListener('click', () => {
+    const pos = Math.max(0, getCurrentPosition() - 10);
+    isPlaying ? startPlayback(pos) : (seekAllTo(pos), updateSeekUI(pos));
+  });
+
+  document.getElementById('seekFwdBtn').addEventListener('click', () => {
+    const pos = Math.min(playerDuration, getCurrentPosition() + 10);
+    isPlaying ? startPlayback(pos) : (seekAllTo(pos), updateSeekUI(pos));
+  });
+
+  const seekEl = document.getElementById('transportSeek');
+  let wasPlayingBeforeSeek = false;
+  seekEl.addEventListener('pointerdown', () => {
+    wasPlayingBeforeSeek = isPlaying;
+    if (isPlaying) pausePlayback();
+  });
+  seekEl.addEventListener('input', () => {
+    seekAllTo(+seekEl.value);
+    updateSeekUI(+seekEl.value);
+  });
+  seekEl.addEventListener('pointerup', () => {
+    if (wasPlayingBeforeSeek) startPlayback(+seekEl.value);
+  });
+}
+
+function showCenterPlaceholder(name) {
+  document.getElementById('pdfContainer').style.display = 'none';
+  document.getElementById('osmdContainer').style.display = '';
+  document.getElementById('zoomInBtn').style.display = 'none';
+  document.getElementById('zoomOutBtn').style.display = 'none';
+  document.getElementById('zoomLevel').style.display = 'none';
+  document.getElementById('currentExercise').textContent = name;
+  document.getElementById('osmdContainer').innerHTML = `
+    <div style="padding: 60px 40px; text-align: center; color: #ccc;">
+      <div style="font-size: 3.5em; margin-bottom: 16px;">🎵</div>
+      <p style="font-size: 1em; color: #bbb;">No score available for this tune</p>
+    </div>
+  `;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 // Handle keyboard shortcuts
 document.addEventListener('keydown', (e) => {
+  // Spacebar: toggle play/pause (skip when focus is inside an input)
+  if (e.key === ' ' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+    e.preventDefault();
+    if (Object.keys(stemAudios).length > 0) {
+      isPlaying ? pausePlayback() : startPlayback();
+    }
+    return;
+  }
   if (e.ctrlKey || e.metaKey) {
     if (e.key === '+' || e.key === '=') {
       e.preventDefault();

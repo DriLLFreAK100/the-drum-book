@@ -49,16 +49,54 @@
         </div>
       </main>
 
-      <!-- Right: Metronome Tool -->
-      <aside class="metronome-panel">
-        <div class="metronome-header">
-          <h2>🎵 Metronome</h2>
+      <!-- Right: Metronome + Music Player -->
+      <aside class="right-panel">
+        <div class="right-panel-tabs">
+          <button class="right-tab active" data-tab="metronome">
+            🥁 Metronome
+          </button>
+          <button class="right-tab" data-tab="player">🎼 Player</button>
         </div>
-        <div class="metronome-container">
-          <iframe
-            src="../metronome/index.html"
-            class="metronome-iframe"
-          ></iframe>
+
+        <!-- Metronome tab -->
+        <div class="right-tab-content active" id="metronomeTab">
+          <div class="metronome-container">
+            <iframe
+              src="../metronome/index.html"
+              class="metronome-iframe"
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- Music Player tab -->
+        <div class="right-tab-content" id="playerTab">
+          <div id="playerLoading" class="player-loading">⏳ Loading stems…</div>
+          <div class="player-tracks" id="playerTracks"></div>
+          <div class="player-transport" id="playerTransport">
+            <div class="transport-row">
+              <span id="transportCurrent" class="transport-time-label"
+                >0:00</span
+              >
+              <input
+                type="range"
+                id="transportSeek"
+                class="transport-seek"
+                min="0"
+                step="0.1"
+                value="0"
+              />
+              <span id="transportDuration" class="transport-time-label"
+                >0:00</span
+              >
+            </div>
+            <div class="transport-row transport-controls">
+              <button id="seekBackBtn" class="transport-btn">«10</button>
+              <button id="playPauseBtn" class="transport-btn play-btn">
+                ▶
+              </button>
+              <button id="seekFwdBtn" class="transport-btn">10»</button>
+            </div>
+          </div>
         </div>
       </aside>
     </div>
