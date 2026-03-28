@@ -88,7 +88,8 @@ window.MANIFEST = {
           "path": "../../.ref/musics/Al Jarreau - We're In This Love Together/vocals.wav"
         }
       ],
-      "score": "../../.ref/musics/Al Jarreau - We're In This Love Together/score.musicxml"
+      "score_mscz": "../../.ref/musics/Al Jarreau - We're In This Love Together/score.mscz",
+      "score_musicxml": "../../.ref/musics/Al Jarreau - We're In This Love Together/score.musicxml"
     },
     {
       "name": "Alfa Mist - Brian",
@@ -130,7 +131,8 @@ window.MANIFEST = {
           "path": "../../.ref/musics/Alfa Mist - Brian/vocals.wav"
         }
       ],
-      "score": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.musicxml"
+      "score_mscz": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.mscz",
+      "score_musicxml": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.musicxml"
     }
   ]
 };

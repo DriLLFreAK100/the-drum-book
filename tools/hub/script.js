@@ -3,9 +3,13 @@ const exercises = {
   categories: []
 };
 
-const OpenSheetMusicDisplay = window.opensheetmusicdisplay?.OpenSheetMusicDisplay;
+// webmscore: global WebMscore available after <script src="webmscore.js">
+// OSMD: global opensheetmusicdisplay available after <script src="opensheetmusicdisplay.min.js">
 let currentZoom = 100;
-let osmd = null;
+let currentRenderer = 'osmd';   // 'osmd' | 'webmscore'
+let osmd = null;                // OpenSheetMusicDisplay instance (reused across loads)
+let lastScoreFile = null;       // { mscz, xml, name } — for re-render on renderer switch
+let lastSvgPages = [];         // raw SVG strings from last webmscore render
 
 // ─── Music Player State ───────────────────────────────────────────────────────
 // Uses HTMLAudioElement per stem — no fetch needed, works on file:// protocol.
@@ -30,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     container.innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">Select an exercise to begin</div>';
     populateExercises(manifest);
     setupZoomControls();
+    setupRendererToggle();
     setupSearch();
     setupPlayer();
     setupRightTabs();
@@ -188,8 +193,15 @@ function formatFileName(fileName) {
     .join(' ');
 }
 
-// Load and display exercise using OSMD
-async function loadExercise(filePath, exerciseName) {
+// Load and display an exercise score (always .musicxml from the exercises/ folder).
+function loadExercise(filePath, exerciseName) {
+  lastScoreFile = { mscz: null, xml: filePath, name: exerciseName };
+  _applyRendererToScore();
+}
+
+// Core render dispatcher — reads lastScoreFile + currentRenderer, picks the right
+// file, syncs the toggle buttons, and fires the appropriate renderer.
+function _applyRendererToScore() {
   // Switch to notation view
   document.getElementById('pdfContainer').style.display = 'none';
   document.getElementById('osmdContainer').style.display = '';
@@ -197,47 +209,107 @@ async function loadExercise(filePath, exerciseName) {
   document.getElementById('zoomOutBtn').style.display = '';
   document.getElementById('zoomLevel').style.display = '';
 
-  try {
-    const container = document.getElementById('osmdContainer');
-    container.innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">Loading exercise...</div>';
+  const container = document.getElementById('osmdContainer');
+  container.innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">Loading score…</div>';
+  document.getElementById('currentExercise').textContent = lastScoreFile.name;
 
-    document.getElementById('currentExercise').textContent = exerciseName;
+  // OSMD can only read xml — disable its button when no xml is available
+  const osmdAvailable = !!lastScoreFile.xml;
+  // If OSMD is selected but xml is missing, fall back to webmscore silently
+  const renderer = (currentRenderer === 'osmd' && !osmdAvailable) ? 'webmscore' : currentRenderer;
 
-    // Fetch the MusicXML file
-    const response = await fetch(filePath);
-    if (!response.ok) {
-      throw new Error(`Failed to load: ${filePath}`);
-    }
+  document.querySelectorAll('.renderer-btn').forEach(b => {
+    b.disabled = b.dataset.renderer === 'osmd' && !osmdAvailable;
+    b.classList.toggle('active', b.dataset.renderer === renderer);
+  });
 
-    const xmlContent = await response.text();
-
-    // Initialize OSMD if not already done
-    if (!osmd) {
-      container.innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">Loading exercise...</div>';
-
-      osmd = new OpenSheetMusicDisplay(container, {
-        autoResize: true,
-        pageFormat: 'A4',
-        drawingParameters: 'default'
-      });
-    }
-
-    // Clear previous content
-    container.innerHTML = '';
-
-    // Load and render the MusicXML
-    await osmd.load(xmlContent);
-    osmd.render();
-
-  } catch (error) {
-    console.error('Error loading exercise:', error);
-    document.getElementById('osmdContainer').innerHTML = `
-            <div style="padding: 20px; color: #d32f2f; text-align: center;">
-                <p>Error loading exercise</p>
-                <p style="font-size: 0.9em; color: #999;">${error.message}</p>
-            </div>
-        `;
+  let filePath, isMscz;
+  if (renderer === 'webmscore') {
+    // Prefer mscz over xml when using webmscore
+    isMscz = !!lastScoreFile.mscz;
+    filePath = lastScoreFile.mscz || lastScoreFile.xml;
+  } else {
+    filePath = lastScoreFile.xml;
+    isMscz = false;
   }
+
+  const onError = err => {
+    console.error('Error loading score:', err);
+    container.innerHTML = `
+      <div style="padding: 20px; color: #d32f2f; text-align: center;">
+        <p>Error loading score</p>
+        <p style="font-size: 0.9em; color: #999;">${err.message}</p>
+      </div>
+    `;
+  };
+
+  if (renderer === 'webmscore') {
+    renderWithWebmscore(filePath, isMscz, container).catch(onError);
+  } else {
+    renderWithOsmd(filePath, container).catch(onError);
+  }
+}
+
+async function renderWithWebmscore(filePath, isMscz, container) {
+  await WebMscore.ready;
+  const response = await fetch(filePath);
+  if (!response.ok) throw new Error(`Failed to load: ${filePath}`);
+  const buffer = await response.arrayBuffer();
+
+  const fmt = isMscz ? 'mscz' : 'xml';
+  const score = await WebMscore.load(fmt, new Uint8Array(buffer));
+  const npages = await score.npages();
+
+  lastSvgPages = [];
+  for (let i = 0; i < npages; i++) {
+    lastSvgPages.push(await score.saveSvg(i, true));
+  }
+  score.destroy();
+
+  _renderSvgPages(container, currentZoom / 100);
+}
+
+// Inject scaled SVG pages into the container.
+function _renderSvgPages(container, zoom) {
+  container.innerHTML = '';
+  for (const svgText of lastSvgPages) {
+    const pageDiv = document.createElement('div');
+    pageDiv.className = 'score-page';
+    pageDiv.innerHTML = svgText;
+    const svg = pageDiv.querySelector('svg');
+    if (svg) {
+      // SVG natural dimensions (e.g. 2977px) always exceed the container, so
+      // CSS max-width:100% would cap both zoomed and unzoomed at identical sizes.
+      // Use percentage width instead so zoom is relative to the container.
+      svg.style.width = (zoom * 100) + '%';
+      svg.style.height = 'auto';
+      svg.style.maxWidth = 'none';
+      svg.style.display = 'block';
+      svg.style.margin = '0 auto';
+    }
+    container.appendChild(pageDiv);
+  }
+}
+
+async function renderWithOsmd(filePath, container) {
+  const response = await fetch(filePath);
+  if (!response.ok) throw new Error(`Failed to load: ${filePath}`);
+  const xmlContent = await response.text();
+
+  if (!osmd) {
+    osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay(container, {
+      autoResize: true,
+      pageFormat: 'A4',
+      drawingParameters: 'default',
+    });
+  } else {
+    // Re-attach to container in case it was replaced
+    osmd.setOptions({ container });
+  }
+
+  container.innerHTML = '';
+  await osmd.load(xmlContent);
+  osmd.render();
 }
 
 // Load and display a PDF reference book
@@ -270,9 +342,47 @@ function setupZoomControls() {
 
 // Apply zoom level
 function applyZoom(zoomValue) {
-  if (!osmd) return;
-  osmd.zoom = zoomValue;
-  osmd.render();
+  document.getElementById('zoomLevel').textContent = `${Math.round(zoomValue * 100)}%`;
+  if (currentRenderer === 'webmscore') {
+    if (lastSvgPages.length > 0) {
+      _renderSvgPages(document.getElementById('osmdContainer'), zoomValue);
+    }
+  } else if (osmd) {
+    osmd.zoom = zoomValue;
+    osmd.render();
+  }
+}
+
+// Renderer toggle
+function setupRendererToggle() {
+  document.querySelectorAll('.renderer-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const chosen = btn.dataset.renderer;
+      if (chosen === currentRenderer || btn.disabled) return;
+      currentRenderer = chosen;
+      // Reset OSMD instance when switching to webmscore so it re-attaches cleanly
+      if (chosen === 'webmscore') osmd = null;
+      // Clear any CSS transform applied by webmscore zoom when switching to OSMD
+      if (chosen === 'osmd') {
+        const c = document.getElementById('osmdContainer');
+        c.style.transform = '';
+        c.style.transformOrigin = '';
+        c.style.width = '';
+      }
+      // Also clear stored SVG pages so stale zoom doesn't bleed across
+      lastSvgPages = [];
+      // Also reset zoom level to 100% on renderer switch to avoid stale scale
+      currentZoom = 100;
+      document.getElementById('zoomLevel').textContent = '100%';
+      if (lastScoreFile) {
+        _applyRendererToScore();
+      } else {
+        document.querySelectorAll('.renderer-btn').forEach(b =>
+          b.classList.toggle('active', b.dataset.renderer === chosen)
+        );
+      }
+    });
+  });
 }
 
 // Search / filter sidebar items
@@ -363,9 +473,11 @@ function loadTune(tune) {
   switchRightTab('player');
 
   // Show score in center if available, otherwise placeholder
-  if (tune.score) {
-    const encodedScore = tune.score.split('/').map(encodeURIComponent).join('/');
-    loadExercise(encodedScore, tune.name);
+  const msczPath = tune.score_mscz ? tune.score_mscz.split('/').map(encodeURIComponent).join('/') : null;
+  const xmlPath = tune.score_musicxml ? tune.score_musicxml.split('/').map(encodeURIComponent).join('/') : null;
+  if (msczPath || xmlPath) {
+    lastScoreFile = { mscz: msczPath, xml: xmlPath, name: tune.name };
+    _applyRendererToScore();
   } else {
     showCenterPlaceholder(tune.name);
   }

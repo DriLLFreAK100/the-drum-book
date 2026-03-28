@@ -129,7 +129,8 @@ def scan_musics() -> list:
             continue
 
         stems = []
-        score = None
+        score_mscz = None
+        score_musicxml = None
 
         for file in sorted(os.listdir(folder_path), key=natural_sort_key):
             if file.startswith('.') or file.startswith('_'):
@@ -145,14 +146,20 @@ def scan_musics() -> list:
                     'icon': icon,
                     'path': f'{HUB_MUSICS_PREFIX}/{folder}/{file}',
                 })
+            elif ext == '.mscz':
+                score_mscz = f'{HUB_MUSICS_PREFIX}/{folder}/{file}'
             elif ext == '.musicxml':
-                score = f'{HUB_MUSICS_PREFIX}/{folder}/{file}'
+                score_musicxml = f'{HUB_MUSICS_PREFIX}/{folder}/{file}'
 
-        if stems or score:
+        # Prefer .mscz (native MuseScore format, richer) over .musicxml
+        score = score_mscz or score_musicxml
+
+        if stems or score_mscz or score_musicxml:
             tunes.append({
                 'name': folder,
                 'stems': stems,
-                'score': score,
+                'score_mscz': score_mscz,
+                'score_musicxml': score_musicxml,
             })
 
     return tunes

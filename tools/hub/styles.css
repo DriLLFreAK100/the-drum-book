@@ -171,6 +171,43 @@ body {
     align-items: center;
 }
 
+/* Renderer toggle pill */
+.renderer-toggle {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.renderer-btn {
+    padding: 5px 10px;
+    background: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    font-size: 0.78em;
+    font-weight: 500;
+    color: #777;
+    transition: background 0.15s, color 0.15s;
+}
+
+.renderer-btn + .renderer-btn {
+    border-left: 1px solid #ddd;
+}
+
+.renderer-btn.active {
+    background: #6a1b9a;
+    color: #fff;
+}
+
+.renderer-btn:hover:not(.active):not(:disabled) {
+    background: #e0e0e0;
+}
+
+.renderer-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
 .zoom-btn {
     padding: 6px 12px;
     background: #f0f0f0;
@@ -203,6 +240,19 @@ body {
 #osmdContainer {
     margin: 0 auto;
     max-width: 100%;
+}
+
+/* webmscore renders one <div class="score-page"> per page */
+.score-page {
+    margin: 16px auto;
+    display: block;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+}
+
+.score-page svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 /* Right panel (Metronome + Music Player) */
