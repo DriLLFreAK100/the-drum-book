@@ -538,8 +538,8 @@ function loadTune(tune) {
     // Wire ended event on leader
     if (stem.label === leaderLabel) {
       audio.addEventListener('ended', () => {
+        Object.values(stemAudios).forEach(a => { a.pause(); try { a.currentTime = 0; } catch { } });
         isPlaying = false;
-        seekAllTo(0);
         updateSeekUI(0);
         document.getElementById('playPauseBtn').textContent = '▶';
         stopRAF();
