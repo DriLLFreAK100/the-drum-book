@@ -35,6 +35,13 @@ window.MANIFEST = {
         "8th-note-triplet.musicxml",
         "16th-note.musicxml"
       ]
+    },
+    {
+      "name": "Metric Modulation",
+      "path": "../../exercises/metric-modulation",
+      "files": [
+        "metric-modulation.mscz"
+      ]
     }
   ],
   "refBooks": [

@@ -313,15 +313,17 @@ async function refreshManifest() {
 function formatFileName(fileName) {
   return fileName
     .replace('.musicxml', '')
+    .replace('.mscz', '')
     .replace(/-/g, ' ')
     .split(' ')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 }
 
-// Load and display an exercise score (always .musicxml from the exercises/ folder).
+// Load and display an exercise score (.musicxml or .mscz from the exercises/ folder).
 function loadExercise(filePath, exerciseName) {
-  lastScoreFile = { mscz: null, xml: filePath, name: exerciseName };
+  const isMscz = filePath.endsWith('.mscz');
+  lastScoreFile = { mscz: isMscz ? filePath : null, xml: isMscz ? null : filePath, name: exerciseName };
   urlStateSet({ item: { type: 'exercise', id: filePath } });
   _applyRendererToScore();
 }

@@ -77,11 +77,15 @@ def scan_exercises() -> list:
             continue
 
         resources_path = os.path.join(folder_path, 'resources')
-        if not os.path.isdir(resources_path):
-            continue
+        if os.path.isdir(resources_path):
+            scan_path = resources_path
+            hub_path = f'{HUB_EXERCISES_PREFIX}/{folder}/resources'
+        else:
+            scan_path = folder_path
+            hub_path = f'{HUB_EXERCISES_PREFIX}/{folder}'
 
         files = sorted(
-            [f for f in os.listdir(resources_path) if f.endswith('.musicxml')],
+            [f for f in os.listdir(scan_path) if f.endswith('.musicxml') or f.endswith('.mscz')],
             key=natural_sort_key,
         )
         if not files:
@@ -89,7 +93,7 @@ def scan_exercises() -> list:
 
         categories.append({
             'name': folder_to_display_name(folder),
-            'path': f'{HUB_EXERCISES_PREFIX}/{folder}/resources',
+            'path': hub_path,
             'files': files,
         })
 
