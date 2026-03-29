@@ -278,7 +278,8 @@ function populateExercises(manifest) {
     const tunesCategory = document.createElement('div');
     tunesCategory.className = 'exercise-category';
 
-    manifest.musics.forEach(tune => {
+    const sortedMusics = manifest.musics.slice().sort((a, b) => a.name.localeCompare(b.name));
+    sortedMusics.forEach(tune => {
       const item = document.createElement('div');
       item.className = 'exercise-item tune-item';
       item.textContent = tune.name;
@@ -635,6 +636,9 @@ function loadTune(tune, _skipUrlState) {
   let loadedCount = 0;
   leaderLabel = stems[0].label;
 
+  // Pre-render track rows in stable order before any audio loads
+  stems.forEach(stem => tracksEl.appendChild(buildTrackToggle(stem)));
+
   stems.forEach(stem => {
     const audio = new Audio();
     audio.preload = 'auto';
@@ -646,7 +650,6 @@ function loadTune(tune, _skipUrlState) {
     const onReady = () => {
       loadedCount++;
       if (audio.duration > playerDuration) playerDuration = audio.duration;
-      tracksEl.appendChild(buildTrackToggle(stem));
 
       if (loadedCount === stems.length || loadedCount === 1) {
         // Enable transport as soon as at least one stem is ready
@@ -659,9 +662,13 @@ function loadTune(tune, _skipUrlState) {
         transportEl.classList.remove('disabled');
       }
 
-      // Once all stems are loaded, apply any persisted stem-enable states
+      // Once all stems are loaded, apply any persisted stem-enable states and position
       if (loadedCount === stems.length) {
         const saved = urlStateGet().player;
+        if (saved && saved.position > 0) {
+          seekAllTo(saved.position);
+          updateSeekUI(saved.position);
+        }
         if (saved && saved.stems) {
           Object.entries(saved.stems).forEach(([label, enabled]) => {
             if (label in stemEnabled) {
@@ -700,6 +707,8 @@ function loadTune(tune, _skipUrlState) {
         updateSeekUI(0);
         document.getElementById('playPauseBtn').textContent = '▶';
         stopRAF();
+        const _ep = urlStateGet().player || {};
+        urlStateSet({ player: Object.assign({}, _ep, { position: 0 }) });
       });
     }
   });
@@ -752,6 +761,8 @@ function pausePlayback() {
   isPlaying = false;
   document.getElementById('playPauseBtn').textContent = '▶';
   stopRAF();
+  const _pp = urlStateGet().player || {};
+  urlStateSet({ player: Object.assign({}, _pp, { position: getCurrentPosition() }) });
 }
 
 function stopPlayback() {
@@ -825,12 +836,12 @@ function setupPlayer() {
 
   document.getElementById('seekBackBtn').addEventListener('click', () => {
     const pos = Math.max(0, getCurrentPosition() - 10);
-    isPlaying ? startPlayback(pos) : (seekAllTo(pos), updateSeekUI(pos));
+    if (isPlaying) { startPlayback(pos); } else { seekAllTo(pos); updateSeekUI(pos); const _bp = urlStateGet().player || {}; urlStateSet({ player: Object.assign({}, _bp, { position: pos }) }); }
   });
 
   document.getElementById('seekFwdBtn').addEventListener('click', () => {
     const pos = Math.min(playerDuration, getCurrentPosition() + 10);
-    isPlaying ? startPlayback(pos) : (seekAllTo(pos), updateSeekUI(pos));
+    if (isPlaying) { startPlayback(pos); } else { seekAllTo(pos); updateSeekUI(pos); const _fp = urlStateGet().player || {}; urlStateSet({ player: Object.assign({}, _fp, { position: pos }) }); }
   });
 
   const seekEl = document.getElementById('transportSeek');
@@ -844,7 +855,7 @@ function setupPlayer() {
     updateSeekUI(+seekEl.value);
   });
   seekEl.addEventListener('pointerup', () => {
-    if (wasPlayingBeforeSeek) startPlayback(+seekEl.value);
+    if (wasPlayingBeforeSeek) { startPlayback(+seekEl.value); } else { const _sp = urlStateGet().player || {}; urlStateSet({ player: Object.assign({}, _sp, { position: +seekEl.value }) }); }
   });
 }
 
