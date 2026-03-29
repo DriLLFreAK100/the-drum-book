@@ -35,17 +35,18 @@ docker build -t local/spleeter-arm64 -f Dockerfile.spleeter .
 
 ### Run on a Directory
 
-From the workspace root, run Spleeter on any directory:
+From the workspace root, run Spleeter on any directory.
+**Always use `$PWD/...` (absolute path) — Docker rejects relative paths for volume mounts.**
 
 ```bash
 # 5 stems (vocals, bass, drums, piano, other)
-tools/music-separation/run_spleeter_docker.sh -d ./.ref/musics -s 5
+tools/music-separation/run_spleeter_docker.sh -d "$PWD/.ref/musics" -s 5
 
 # 4 stems (vocals, bass, drums, other)
-tools/music-separation/run_spleeter_docker.sh -d ./.ref/musics -s 4
+tools/music-separation/run_spleeter_docker.sh -d "$PWD/.ref/musics" -s 4
 
 # 2 stems (vocals, accompaniment)
-tools/music-separation/run_spleeter_docker.sh -d ./.ref/musics -s 2
+tools/music-separation/run_spleeter_docker.sh -d "$PWD/.ref/musics" -s 2
 ```
 
 ### Command Options
@@ -77,19 +78,19 @@ For each audio file, Spleeter creates a folder with stem files:
 ### Separate all songs in .ref/musics with 5 stems
 
 ```bash
-tools/music-separation/run_spleeter_docker.sh -d ./.ref/musics -s 5
+tools/music-separation/run_spleeter_docker.sh -d "$PWD/.ref/musics" -s 5
 ```
 
 ### Separate a specific file's directory with 4 stems
 
 ```bash
-tools/music-separation/run_spleeter_docker.sh -d ./.ref/musics/my-song -s 4
+tools/music-separation/run_spleeter_docker.sh -d "$PWD/.ref/musics/my-song" -s 4
 ```
 
 ### Recursive search in subdirectories with 5 stems
 
 ```bash
-tools/music-separation/run_spleeter_docker.sh -d ./.ref/musics -s 5 --recursive yes
+tools/music-separation/run_spleeter_docker.sh -d "$PWD/.ref/musics" -s 5 --recursive yes
 ```
 
 ## Notes
@@ -105,6 +106,10 @@ tools/music-separation/run_spleeter_docker.sh -d ./.ref/musics -s 5 --recursive 
 
 - Verify the directory path contains audio files in supported formats
 - Check file extensions are lowercase (or use recursive mode if nested)
+
+### Docker volume mount error (invalid characters)
+
+- Docker requires absolute paths for `-v` mounts. Always pass `"$PWD/path"` instead of `./path`
 
 ### Docker image not found
 

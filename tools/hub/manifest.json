@@ -184,6 +184,92 @@
       "score_musicxml": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.musicxml"
     },
     {
+      "name": "ETC - I Want to See You in a Negative Light",
+      "stems": [
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/ETC - I Want to See You in a Negative Light/bass.wav"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/ETC - I Want to See You in a Negative Light/drums.wav"
+        },
+        {
+          "name": "ETC - I Want to See You in a Negative Light",
+          "label": "Etc - i want to see you in a negative light",
+          "icon": "📀",
+          "path": "../../.ref/musics/ETC - I Want to See You in a Negative Light/ETC - I Want to See You in a Negative Light.mp3"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/ETC - I Want to See You in a Negative Light/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/ETC - I Want to See You in a Negative Light/piano.wav"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/ETC - I Want to See You in a Negative Light/vocals.wav"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null
+    },
+    {
+      "name": "ETC - You Had Me at Hello",
+      "stems": [
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/ETC - You Had Me at Hello/bass.wav"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/ETC - You Had Me at Hello/drums.wav"
+        },
+        {
+          "name": "ETC - You Had Me at Hello",
+          "label": "Etc - you had me at hello",
+          "icon": "📀",
+          "path": "../../.ref/musics/ETC - You Had Me at Hello/ETC - You Had Me at Hello.mp3"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/ETC - You Had Me at Hello/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/ETC - You Had Me at Hello/piano.wav"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/ETC - You Had Me at Hello/vocals.wav"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null
+    },
+    {
       "name": "WIM - Dear Peach",
       "stems": [
         {

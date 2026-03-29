@@ -3,6 +3,7 @@
     "/^python3 tools/hub/generate-manifest\\.py$/": {
       "approve": true,
       "matchCommandLine": true
-    }
+    },
+    "tools/music-separation/run_spleeter_docker.sh": true
   }
 }
