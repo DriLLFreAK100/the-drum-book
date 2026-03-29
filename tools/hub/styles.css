@@ -194,6 +194,27 @@ body {
     border-left: 1px solid #ddd;
 }
 
+.autoscroll-btn {
+    padding: 5px 10px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.78em;
+    font-weight: 500;
+    color: #777;
+    transition: background 0.15s, color 0.15s;
+}
+
+.autoscroll-btn.active {
+    background: #6a1b9a;
+    color: #fff;
+}
+
+.autoscroll-btn:hover:not(.active) {
+    background: #e0e0e0;
+}
+
 .renderer-btn.active {
     background: #6a1b9a;
     color: #fff;

@@ -20,6 +20,7 @@ let isPlaying = false;
 let masterVolume = 1;
 let rafId = null;
 let leaderLabel = null;   // label of the primary audio element used for time tracking
+let autoScroll = true;    // scroll notation container in sync with playback
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Manifest is loaded dynamically from manifest.json at startup.
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     populateExercises(manifest);
     setupZoomControls();
     setupRendererToggle();
+    setupAutoScrollToggle();
     setupSearch();
     setupPlayer();
     setupRightTabs();
@@ -619,10 +621,29 @@ function startRAF() {
   stopRAF();
   const tick = () => {
     if (!isPlaying) return;
-    updateSeekUI(getCurrentPosition());
+    const pos = getCurrentPosition();
+    updateSeekUI(pos);
+    if (autoScroll && playerDuration > 0) {
+      const container = document.querySelector('.notation-container');
+      if (container) {
+        const maxScroll = container.scrollHeight - container.clientHeight;
+        container.scrollTop = (pos / playerDuration) * maxScroll;
+      }
+    }
     rafId = requestAnimationFrame(tick);
   };
   rafId = requestAnimationFrame(tick);
+}
+
+function setupAutoScrollToggle() {
+  const btn = document.getElementById('autoScrollBtn');
+  if (!btn) return;
+  btn.classList.toggle('active', autoScroll);
+  btn.addEventListener('click', () => {
+    autoScroll = !autoScroll;
+    btn.classList.toggle('active', autoScroll);
+    btn.title = autoScroll ? 'Auto-scroll: on' : 'Auto-scroll: off';
+  });
 }
 
 function stopRAF() {
