@@ -49,6 +49,49 @@ window.MANIFEST = {
   ],
   "musics": [
     {
+      "name": "Al Jarreau - Never Givin' Up",
+      "stems": [
+        {
+          "name": "Al Jarreau - Never Givin' Up",
+          "label": "Al jarreau - never givin' up",
+          "icon": "📀",
+          "path": "../../.ref/musics/Al Jarreau - Never Givin' Up/Al Jarreau - Never Givin' Up.mp3"
+        },
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/Al Jarreau - Never Givin' Up/bass.wav"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/Al Jarreau - Never Givin' Up/drums.wav"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/Al Jarreau - Never Givin' Up/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/Al Jarreau - Never Givin' Up/piano.wav"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/Al Jarreau - Never Givin' Up/vocals.wav"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null
+    },
+    {
       "name": "Al Jarreau - We're In This Love Together",
       "stems": [
         {
@@ -133,6 +176,135 @@ window.MANIFEST = {
       ],
       "score_mscz": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.mscz",
       "score_musicxml": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.musicxml"
+    },
+    {
+      "name": "WIM - Dear Peach",
+      "stems": [
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/WIM - Dear Peach/bass.wav"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/WIM - Dear Peach/drums.wav"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/WIM - Dear Peach/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/WIM - Dear Peach/piano.wav"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/WIM - Dear Peach/vocals.wav"
+        },
+        {
+          "name": "WIM - Dear Peach",
+          "label": "Wim - dear peach",
+          "icon": "📀",
+          "path": "../../.ref/musics/WIM - Dear Peach/WIM - Dear Peach.mp3"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null
+    },
+    {
+      "name": "WIM - Snacks & Wine",
+      "stems": [
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/WIM - Snacks & Wine/bass.wav"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/WIM - Snacks & Wine/drums.wav"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/WIM - Snacks & Wine/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/WIM - Snacks & Wine/piano.wav"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/WIM - Snacks & Wine/vocals.wav"
+        },
+        {
+          "name": "WIM - Snacks & Wine",
+          "label": "Wim - snacks & wine",
+          "icon": "📀",
+          "path": "../../.ref/musics/WIM - Snacks & Wine/WIM - Snacks & Wine.mp3"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null
+    },
+    {
+      "name": "WIM - Two Of Us",
+      "stems": [
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/WIM - Two Of Us/bass.wav"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/WIM - Two Of Us/drums.wav"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/WIM - Two Of Us/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/WIM - Two Of Us/piano.wav"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/WIM - Two Of Us/vocals.wav"
+        },
+        {
+          "name": "WIM - Two Of Us",
+          "label": "Wim - two of us",
+          "icon": "📀",
+          "path": "../../.ref/musics/WIM - Two Of Us/WIM - Two Of Us.m4a"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null
     }
   ]
 };

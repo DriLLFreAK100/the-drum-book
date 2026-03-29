@@ -1,0 +1,19 @@
+FROM python:3.10-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+    libsndfile1 \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN python -m pip install --upgrade pip wheel setuptools
+
+# Install TensorFlow for linux/arm64 and Spleeter
+# Rely on pip to resolve compatible versions; if needed, pin TF.
+RUN pip install --no-cache-dir tensorflow spleeter
+
+WORKDIR /work
+
+ENTRYPOINT ["spleeter"]
