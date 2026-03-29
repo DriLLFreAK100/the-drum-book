@@ -6,8 +6,8 @@ let metronomeState = {
   isPlaying: false,
   tempo: 120,
   timeSignature: '4/4',
-  soundPalette: 'woodenblock',
-  basePitch: 250,
+  soundPalette: 'metronome',
+  basePitch: 700,
   currentBeat: 0,
   nextNoteTime: 0,
   scheduleAheadTime: 0.1,
@@ -15,6 +15,7 @@ let metronomeState = {
   timerID: null,
   beatTones: {}, // Store tone pitch for each beat: "sig_beatNum": pitch
   beatMutes: {}, // Store muted beats: "sig_beatNum": true/false
+  accentFirstBeat: true, // Whether beat 1 plays with a different (accented) tone
 };
 
 // Pitch range configurations for each sound palette
@@ -35,6 +36,16 @@ const timeSignatures = {
   '9/8': 9,
   '15/16': 15,
 };
+
+// Knob rotation state — module-level so RESTORE_STATE can update it
+let knobCurrentRotation = 0;
+
+// Set the knob visual to match a given tempo value
+function applyTempoToKnob(tempo) {
+  const minTempo = 40, maxTempo = 240, rotationRange = 270;
+  knobCurrentRotation = ((tempo - minTempo) / (maxTempo - minTempo)) * rotationRange;
+  document.getElementById('tempoKnob').style.transform = `rotate(${knobCurrentRotation}deg)`;
+}
 
 // Initialize audio context
 function initAudioContext() {
@@ -257,7 +268,7 @@ function scheduleNextBeat() {
 
 // Schedule a note with custom tone support
 function scheduleNote(beatNumber, time) {
-  const isAccent = beatNumber === 0; // First beat is accented
+  const isAccent = beatNumber === 0 && metronomeState.accentFirstBeat; // First beat is accented (if enabled)
   const sigKey = `${metronomeState.timeSignature}_${beatNumber}`;
   const customPitch = metronomeState.beatTones[sigKey];
   const isMuted = metronomeState.beatMutes[sigKey]; // Check if beat is muted
@@ -359,7 +370,6 @@ function setupKnobControl() {
   const knob = document.getElementById('tempoKnob');
   let isRotating = false;
   let startAngle = 0;
-  let currentRotation = 0;
 
   const minTempo = 40;
   const maxTempo = 240;
@@ -381,7 +391,7 @@ function setupKnobControl() {
 
   function updateTempo() {
     // Map total rotation to tempo range (infinite rotation)
-    const rotation = currentRotation % 360;
+    const rotation = knobCurrentRotation % 360;
     const normRotation = ((rotation % 360) + 360) % 360;
     const tempoRange = maxTempo - minTempo;
     const tempoPosition = (normRotation / rotationRange) * tempoRange;
@@ -390,8 +400,9 @@ function setupKnobControl() {
     metronomeState.tempo = Math.max(minTempo, Math.min(maxTempo, tempo));
 
     // Visual rotation (shows infinite turns)
-    document.getElementById('tempoKnob').style.transform = `rotate(${currentRotation}deg)`;
+    document.getElementById('tempoKnob').style.transform = `rotate(${knobCurrentRotation}deg)`;
     document.getElementById('bpmValue').textContent = metronomeState.tempo;
+    _postStateToHub();
   }
 
   knob.addEventListener('mousedown', (e) => {
@@ -417,7 +428,7 @@ function setupKnobControl() {
       angleDiff += 360;
     }
 
-    currentRotation += angleDiff;
+    knobCurrentRotation += angleDiff;
     startAngle = currentAngle;
 
     updateTempo();
@@ -436,7 +447,7 @@ function setupKnobControl() {
       angleDiff += 360;
     }
 
-    currentRotation += angleDiff;
+    knobCurrentRotation += angleDiff;
     startAngle = currentAngle;
 
     updateTempo();
@@ -488,8 +499,19 @@ function setupEventListeners() {
 
       // Play preview
       playWoodenTick(audioContext.currentTime || 0, true);
+      _postStateToHub();
     });
   });
+
+  // Accent first beat toggle
+  const accentFirstBeatBtn = document.getElementById('accentFirstBeatBtn');
+  if (accentFirstBeatBtn) {
+    accentFirstBeatBtn.addEventListener('click', () => {
+      metronomeState.accentFirstBeat = !metronomeState.accentFirstBeat;
+      accentFirstBeatBtn.classList.toggle('active', metronomeState.accentFirstBeat);
+      _postStateToHub();
+    });
+  }
 
   // Time signature buttons
   document.querySelectorAll('.time-sig-btn').forEach(btn => {
@@ -506,6 +528,7 @@ function setupEventListeners() {
         metronomeState.currentBeat = 0;
         updateBeatDisplay(0);
       }
+      _postStateToHub();
     });
   });
 
@@ -521,6 +544,7 @@ function setupEventListeners() {
   // Preview for pitch slider
   pitchSlider.addEventListener('change', () => {
     playWoodenTick(audioContext.currentTime || 0, false, metronomeState.basePitch);
+    _postStateToHub();
   });
 }
 
@@ -569,6 +593,7 @@ function populateBeatTones() {
       } else {
         btn.classList.remove('muted');
       }
+      _postStateToHub();
     });
 
     grid.appendChild(btn);
@@ -628,6 +653,7 @@ function setupBeatToneModal(beatNum, sourceBtn) {
       metronomeState.beatTones[sigKey] = freq;
       sourceBtn.classList.add('set');
       playWoodenTick(audioContext.currentTime, beatNum === 0, freq);
+      _postStateToHub();
       document.body.removeChild(overlay);
       document.body.removeChild(dialog);
     });
@@ -644,6 +670,7 @@ function setupBeatToneModal(beatNum, sourceBtn) {
   dialog.querySelector('.modal-clear').addEventListener('click', () => {
     delete metronomeState.beatTones[sigKey];
     sourceBtn.classList.remove('set');
+    _postStateToHub();
     document.body.removeChild(overlay);
     document.body.removeChild(dialog);
   });
@@ -656,6 +683,7 @@ function setupBeatToneModal(beatNum, sourceBtn) {
       metronomeState.beatTones[sigKey] = pitch;
       sourceBtn.classList.add('set');
     }
+    _postStateToHub();
     document.body.removeChild(overlay);
     document.body.removeChild(dialog);
   });
@@ -834,4 +862,83 @@ document.addEventListener('DOMContentLoaded', () => {
   populateBeatTones();
   updatePitchSliderRange(metronomeState.soundPalette);
   updateBeatDisplay(0);
+  applyTempoToKnob(metronomeState.tempo);
+  // Signal hub that the metronome iframe is ready to receive RESTORE_STATE
+  if (window.parent !== window) {
+    window.parent.postMessage({ type: 'METRONOME_READY' }, '*');
+  }
 });
+
+// ─── Hub state bridge ────────────────────────────────────────────────────────
+// Write metronome state directly into the parent hub's URL hash (synchronous,
+// so no data is lost on immediate page refresh).
+function _postStateToHub() {
+  if (window.parent === window) return;
+  try {
+    const parentLoc = window.parent.location;
+    let current = {};
+    try {
+      const hash = parentLoc.hash.slice(1);
+      if (hash) current = JSON.parse(atob(hash));
+    } catch { }
+    current.metronome = {
+      tempo: metronomeState.tempo,
+      timeSig: metronomeState.timeSignature,
+      palette: metronomeState.soundPalette,
+      pitch: metronomeState.basePitch,
+      beatTones: Object.assign({}, metronomeState.beatTones),
+      beatMutes: Object.assign({}, metronomeState.beatMutes),
+      accentFirstBeat: metronomeState.accentFirstBeat,
+    };
+    const basePath = parentLoc.href.split('#')[0];
+    parentLoc.replace(basePath + '#' + btoa(JSON.stringify(current)));
+  } catch (e) {
+    // Cross-origin fallback (shouldn't happen in normal use)
+    window.parent.postMessage({ type: 'METRONOME_STATE_CHANGED', state: current.metronome }, '*');
+  }
+}
+
+// Listen for RESTORE_STATE from hub (sent after page reload).
+window.addEventListener('message', (e) => {
+  if (!e.data || e.data.type !== 'RESTORE_STATE') return;
+  const s = e.data.state;
+  if (!s) return;
+
+  if (s.tempo) {
+    metronomeState.tempo = s.tempo;
+    document.getElementById('bpmValue').textContent = s.tempo;
+    applyTempoToKnob(s.tempo);
+  }
+  if (s.timeSig) {
+    metronomeState.timeSignature = s.timeSig;
+    document.querySelectorAll('.time-sig-btn').forEach(b =>
+      b.classList.toggle('active', b.dataset.sig === s.timeSig)
+    );
+    populateBeatTones();
+  }
+  if (s.palette) {
+    metronomeState.soundPalette = s.palette;
+    document.querySelectorAll('.sound-palette-btn').forEach(b =>
+      b.classList.toggle('active', b.dataset.palette === s.palette)
+    );
+    updatePitchSliderRange(s.palette);
+  }
+  if (s.pitch) {
+    metronomeState.basePitch = s.pitch;
+    const slider = document.getElementById('pitchSlider');
+    if (slider) slider.value = s.pitch;
+    const val = document.getElementById('pitchValue');
+    if (val) val.textContent = s.pitch;
+  }
+  if (s.beatTones) Object.assign(metronomeState.beatTones, s.beatTones);
+  if (s.beatMutes) Object.assign(metronomeState.beatMutes, s.beatMutes);
+  if (s.accentFirstBeat !== undefined) {
+    metronomeState.accentFirstBeat = s.accentFirstBeat;
+    const btn = document.getElementById('accentFirstBeatBtn');
+    if (btn) btn.classList.toggle('active', s.accentFirstBeat);
+  }
+
+  // Refresh beat grid to reflect restored tones/mutes
+  populateBeatTones();
+});
+// ─────────────────────────────────────────────────────────────────────────────

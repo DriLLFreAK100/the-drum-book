@@ -38,16 +38,32 @@
             <button class="time-sig-btn" data-sig="9/8">9/8</button>
             <button class="time-sig-btn" data-sig="15/16">15/16</button>
           </div>
+          <div class="accent-toggle">
+            <button
+              class="accent-first-beat-btn active"
+              id="accentFirstBeatBtn"
+            >
+              Accent beat 1
+            </button>
+          </div>
         </div>
 
         <!-- Sound Palette -->
         <div class="sound-palette-section">
           <h2>Sound Palette</h2>
           <div class="sound-palette-buttons">
-            <button class="sound-palette-btn active" data-palette="woodenblock">🪵 Wooden Block</button>
-            <button class="sound-palette-btn" data-palette="cowbell">🔔 Cowbell</button>
-            <button class="sound-palette-btn" data-palette="metronome">⏱️ Metronome</button>
-            <button class="sound-palette-btn" data-palette="beep">📱 Beep</button>
+            <button class="sound-palette-btn" data-palette="woodenblock">
+              🪵 Wooden Block
+            </button>
+            <button class="sound-palette-btn" data-palette="cowbell">
+              🔔 Cowbell
+            </button>
+            <button class="sound-palette-btn active" data-palette="metronome">
+              ⏱️ Metronome
+            </button>
+            <button class="sound-palette-btn" data-palette="beep">
+              📱 Beep
+            </button>
           </div>
         </div>
 
@@ -55,7 +71,13 @@
         <div class="pitch-section">
           <h2>Pitch (Hz)</h2>
           <div class="pitch-control">
-            <input type="range" id="pitchSlider" min="150" max="400" value="250" />
+            <input
+              type="range"
+              id="pitchSlider"
+              min="150"
+              max="400"
+              value="250"
+            />
             <span class="pitch-value" id="pitchValue">250</span>
           </div>
         </div>
@@ -64,7 +86,9 @@
         <div class="beat-tones-section">
           <h2>Beat Tones</h2>
           <div class="beat-tones-grid" id="beatTonesGrid"></div>
-          <p class="beat-tones-hint">Click to set tone | Right-click to mute/unmute</p>
+          <p class="beat-tones-hint">
+            Click to set tone | Right-click to mute/unmute
+          </p>
         </div>
 
         <!-- Play/Stop -->

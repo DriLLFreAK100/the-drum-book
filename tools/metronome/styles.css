@@ -156,6 +156,33 @@ h2 {
     border-color: transparent;
 }
 
+.accent-toggle {
+    margin-top: 10px;
+}
+
+.accent-first-beat-btn {
+    padding: 8px 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    color: #555;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.accent-first-beat-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.accent-first-beat-btn.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-color: transparent;
+}
+
 /* Sound Palette Section */
 .sound-palette-section {
     display: flex;

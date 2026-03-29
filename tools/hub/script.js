@@ -23,6 +23,46 @@ let leaderLabel = null;   // label of the primary audio element used for time tr
 let autoScroll = true;    // scroll notation container in sync with playback
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ─── URL State ────────────────────────────────────────────────────────────────
+// Persists app state in location.hash as a base64-encoded JSON blob so that
+// refreshing the page restores exactly where the user was.
+//
+// Shape: { item, renderer, zoom, autoScroll, tab, metronome }
+//   item: { type: 'exercise'|'tune'|'pdf', id: string }
+//   renderer: 'osmd'|'webmscore'
+//   zoom: number
+//   autoScroll: bool
+//   tab: 'metronome'|'player'
+//   metronome: { tempo, timeSig, palette, pitch, beatTones, beatMutes }
+
+let _urlStateWriteLock = false; // prevent recursive writes during restore
+let _pendingMetronomeRestore = null; // queued until METRONOME_READY fires
+
+function urlStateGet() {
+  try {
+    const hash = location.hash.slice(1);
+    if (!hash) return {};
+    return JSON.parse(atob(hash));
+  } catch {
+    return {};
+  }
+}
+
+function urlStateSet(patch) {
+  if (_urlStateWriteLock) return;
+  const current = urlStateGet();
+  const next = Object.assign({}, current, patch);
+  location.replace('#' + btoa(JSON.stringify(next)));
+}
+
+function urlStateClear(keys) {
+  if (_urlStateWriteLock) return;
+  const current = urlStateGet();
+  keys.forEach(k => delete current[k]);
+  location.replace('#' + btoa(JSON.stringify(current)));
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 // Manifest is loaded dynamically from manifest.json at startup.
 // Run tools/hub/generate-manifest.py whenever exercises or .ref books change.
 
@@ -40,6 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupSearch();
     setupPlayer();
     setupRightTabs();
+    await restoreStateFromUrl(manifest);
   } catch (error) {
     container.innerHTML = `
       <div style="padding: 40px; text-align: center; color: #d32f2f;">
@@ -70,6 +111,88 @@ async function loadManifest() {
       'manifest.js not found and manifest.json could not be fetched. ' +
       'Run tools/hub/generate-manifest.py to generate it.'
     );
+  }
+}
+
+// Restore app state from URL hash. Called once after the manifest is loaded.
+async function restoreStateFromUrl(manifest) {
+  const s = urlStateGet();
+  if (!Object.keys(s).length) return;
+
+  _urlStateWriteLock = true;
+  try {
+    // ── renderer ──────────────────────────────────────────────────────────────
+    if (s.renderer && s.renderer !== currentRenderer) {
+      currentRenderer = s.renderer;
+      document.querySelectorAll('.renderer-btn').forEach(b =>
+        b.classList.toggle('active', b.dataset.renderer === currentRenderer)
+      );
+    }
+
+    // ── zoom ──────────────────────────────────────────────────────────────────
+    if (s.zoom && s.zoom !== currentZoom) {
+      currentZoom = s.zoom;
+      document.getElementById('zoomLevel').textContent = currentZoom + '%';
+    }
+
+    // ── autoScroll ────────────────────────────────────────────────────────────
+    if (typeof s.autoScroll === 'boolean' && s.autoScroll !== autoScroll) {
+      autoScroll = s.autoScroll;
+      const btn = document.getElementById('autoScrollBtn');
+      if (btn) {
+        btn.classList.toggle('active', autoScroll);
+        btn.title = autoScroll ? 'Auto-scroll: on' : 'Auto-scroll: off';
+      }
+    }
+
+    // ── right tab ─────────────────────────────────────────────────────────────
+    if (s.tab) switchRightTab(s.tab, true);
+
+    // ── selected item ─────────────────────────────────────────────────────────
+    if (s.item) {
+      const { type, id } = s.item;
+
+      if (type === 'exercise') {
+        // Find the matching exercise item in the sidebar and activate it
+        const sidebarItem = document.querySelector(`.exercise-item[data-path="${CSS.escape(id)}"]`);
+        if (sidebarItem) {
+          document.querySelectorAll('.exercise-item').forEach(i => i.classList.remove('active'));
+          sidebarItem.classList.add('active');
+          // Build name the same way the click handler does
+          const name = sidebarItem.dataset.name || id;
+          lastScoreFile = { mscz: null, xml: id, name };
+          _applyRendererToScore();
+        }
+      } else if (type === 'tune') {
+        const tune = (manifest.musics || []).find(t => t.name === id);
+        if (tune) {
+          const sidebarItem = document.querySelector(`.tune-item[data-name="${CSS.escape(id)}"]`);
+          if (sidebarItem) {
+            document.querySelectorAll('.exercise-item').forEach(i => i.classList.remove('active'));
+            sidebarItem.classList.add('active');
+          }
+          loadTune(tune, true);
+        }
+      } else if (type === 'pdf') {
+        const book = (manifest.refBooks || []).find(b => b.path === id);
+        if (book) {
+          const sidebarItem = document.querySelector(`.ref-book-item[data-path="${CSS.escape(id)}"]`);
+          if (sidebarItem) {
+            document.querySelectorAll('.exercise-item').forEach(i => i.classList.remove('active'));
+            sidebarItem.classList.add('active');
+          }
+          loadPdf(id, book.name, true);
+        }
+      }
+    }
+
+    // ── metronome ─────────────────────────────────────────────────────────────
+    // Store for sending once the metronome iframe fires METRONOME_READY.
+    if (s.metronome) {
+      _pendingMetronomeRestore = s.metronome;
+    }
+  } finally {
+    _urlStateWriteLock = false;
   }
 }
 
@@ -198,6 +321,7 @@ function formatFileName(fileName) {
 // Load and display an exercise score (always .musicxml from the exercises/ folder).
 function loadExercise(filePath, exerciseName) {
   lastScoreFile = { mscz: null, xml: filePath, name: exerciseName };
+  urlStateSet({ item: { type: 'exercise', id: filePath } });
   _applyRendererToScore();
 }
 
@@ -315,7 +439,8 @@ async function renderWithOsmd(filePath, container) {
 }
 
 // Load and display a PDF reference book
-function loadPdf(filePath, bookName) {
+function loadPdf(filePath, bookName, _skipUrlState) {
+  if (!_skipUrlState) urlStateSet({ item: { type: 'pdf', id: filePath } });
   // Switch to PDF view
   document.getElementById('osmdContainer').style.display = 'none';
   document.getElementById('pdfContainer').style.display = '';
@@ -334,11 +459,13 @@ function setupZoomControls() {
   document.getElementById('zoomInBtn').addEventListener('click', () => {
     currentZoom = Math.min(currentZoom + 10, 200);
     applyZoom(currentZoom / 100);
+    urlStateSet({ zoom: currentZoom });
   });
 
   document.getElementById('zoomOutBtn').addEventListener('click', () => {
     currentZoom = Math.max(currentZoom - 10, 50);
     applyZoom(currentZoom / 100);
+    urlStateSet({ zoom: currentZoom });
   });
 }
 
@@ -376,6 +503,7 @@ function setupRendererToggle() {
       // Also reset zoom level to 100% on renderer switch to avoid stale scale
       currentZoom = 100;
       document.getElementById('zoomLevel').textContent = '100%';
+      urlStateSet({ renderer: chosen, zoom: 100 });
       if (lastScoreFile) {
         _applyRendererToScore();
       } else {
@@ -454,13 +582,14 @@ function setupRightTabs() {
   });
 }
 
-function switchRightTab(tabName) {
+function switchRightTab(tabName, _skipUrlState) {
   document.querySelectorAll('.right-tab').forEach(t =>
     t.classList.toggle('active', t.dataset.tab === tabName)
   );
   document.querySelectorAll('.right-tab-content').forEach(c =>
     c.classList.toggle('active', c.id === tabName + 'Tab')
   );
+  if (!_skipUrlState) urlStateSet({ tab: tabName });
 }
 
 // ─── Music Player ─────────────────────────────────────────────────────────────
@@ -470,9 +599,10 @@ function playerFormatTime(s) {
   return `${m}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 }
 
-function loadTune(tune) {
+function loadTune(tune, _skipUrlState) {
   // Switch right panel to player tab
-  switchRightTab('player');
+  switchRightTab('player', _skipUrlState);
+  if (!_skipUrlState) urlStateSet({ item: { type: 'tune', id: tune.name } });
 
   // Show score in center if available, otherwise placeholder
   const msczPath = tune.score_mscz ? tune.score_mscz.split('/').map(encodeURIComponent).join('/') : null;
@@ -528,6 +658,31 @@ function loadTune(tune) {
         document.getElementById('transportCurrent').textContent = '0:00';
         transportEl.classList.remove('disabled');
       }
+
+      // Once all stems are loaded, apply any persisted stem-enable states
+      if (loadedCount === stems.length) {
+        const saved = urlStateGet().player;
+        if (saved && saved.stems) {
+          Object.entries(saved.stems).forEach(([label, enabled]) => {
+            if (label in stemEnabled) {
+              stemEnabled[label] = enabled;
+              const audio = stemAudios[label];
+              if (audio) audio.volume = enabled ? masterVolume : 0;
+              // Reflect in the track row UI
+              const trackEl = document.getElementById('playerTracks')
+                .querySelector(`.player-track[data-label="${CSS.escape(label)}"]`);
+              if (trackEl) {
+                trackEl.classList.toggle('active', enabled);
+                const toggleBtn = trackEl.querySelector('.track-toggle-btn');
+                if (toggleBtn) {
+                  toggleBtn.textContent = enabled ? '✓' : '✗';
+                  toggleBtn.setAttribute('aria-pressed', String(enabled));
+                }
+              }
+            }
+          });
+        }
+      }
     };
 
     audio.addEventListener('loadedmetadata', onReady, { once: true });
@@ -553,6 +708,7 @@ function loadTune(tune) {
 function buildTrackToggle(stem) {
   const el = document.createElement('div');
   el.className = 'player-track active';
+  el.dataset.label = stem.label;
   el.innerHTML = `
     <span class="track-icon">${stem.icon}</span>
     <span class="track-label">${stem.label}</span>
@@ -568,6 +724,8 @@ function buildTrackToggle(stem) {
     el.classList.toggle('active', enabled);
     btn.textContent = enabled ? '✓' : '✗';
     btn.setAttribute('aria-pressed', String(enabled));
+    // Persist stem states whenever one is toggled
+    urlStateSet({ player: { stems: Object.assign({}, stemEnabled) } });
   });
 
   return el;
@@ -643,6 +801,7 @@ function setupAutoScrollToggle() {
     autoScroll = !autoScroll;
     btn.classList.toggle('active', autoScroll);
     btn.title = autoScroll ? 'Auto-scroll: on' : 'Auto-scroll: off';
+    urlStateSet({ autoScroll });
   });
 }
 
@@ -704,6 +863,26 @@ function showCenterPlaceholder(name) {
   `;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ─── Metronome postMessage bridge ─────────────────────────────────────────────
+// METRONOME_READY: the iframe fires this when its DOMContentLoaded runs, so we
+// know it's safe to send RESTORE_STATE (eliminates the iframe load-race).
+// (METRONOME_STATE_CHANGED is no longer used — the metronome writes the hash directly.)
+window.addEventListener('message', (e) => {
+  if (!e.data) return;
+  if (e.data.type === 'METRONOME_READY') {
+    if (_pendingMetronomeRestore) {
+      const iframe = document.querySelector('.metronome-iframe');
+      if (iframe) {
+        iframe.contentWindow.postMessage(
+          { type: 'RESTORE_STATE', state: _pendingMetronomeRestore }, '*'
+        );
+      }
+      _pendingMetronomeRestore = null;
+    }
+  }
+});
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Handle keyboard shortcuts
