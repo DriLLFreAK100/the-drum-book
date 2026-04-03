@@ -331,6 +331,41 @@ function loadExercise(filePath, exerciseName) {
 // Core render dispatcher — reads lastScoreFile + currentRenderer, picks the right
 // file, syncs the toggle buttons, and fires the appropriate renderer.
 function _applyRendererToScore() {
+  document.getElementById('currentExercise').textContent = lastScoreFile.name;
+
+  const osmdAvailable = !!lastScoreFile.xml;
+  const pdfAvailable = !!lastScoreFile.pdf;
+
+  // Resolve effective renderer with fallback chain:
+  //   pdf   → pdf (if available), else osmd (if xml), else webmscore
+  //   osmd  → osmd (if xml available), else webmscore
+  //   webmscore → webmscore
+  let renderer = currentRenderer;
+  if (renderer === 'pdf' && !pdfAvailable) {
+    renderer = osmdAvailable ? 'osmd' : 'webmscore';
+  } else if (renderer === 'osmd' && !osmdAvailable) {
+    renderer = 'webmscore';
+  }
+
+  document.querySelectorAll('.renderer-btn').forEach(b => {
+    if (b.dataset.renderer === 'osmd') b.disabled = !osmdAvailable;
+    else if (b.dataset.renderer === 'pdf') b.disabled = !pdfAvailable;
+    else b.disabled = false;
+    b.classList.toggle('active', b.dataset.renderer === renderer);
+  });
+
+  if (renderer === 'pdf') {
+    // Show PDF view
+    document.getElementById('osmdContainer').style.display = 'none';
+    document.getElementById('pdfContainer').style.display = '';
+    document.getElementById('zoomInBtn').style.display = 'none';
+    document.getElementById('zoomOutBtn').style.display = 'none';
+    document.getElementById('zoomLevel').style.display = 'none';
+    const encodedPath = lastScoreFile.pdf.split('/').map(s => encodeURIComponent(s)).join('/');
+    document.getElementById('pdfFrame').src = encodedPath;
+    return;
+  }
+
   // Switch to notation view
   document.getElementById('pdfContainer').style.display = 'none';
   document.getElementById('osmdContainer').style.display = '';
@@ -340,17 +375,6 @@ function _applyRendererToScore() {
 
   const container = document.getElementById('osmdContainer');
   container.innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">Loading score…</div>';
-  document.getElementById('currentExercise').textContent = lastScoreFile.name;
-
-  // OSMD can only read xml — disable its button when no xml is available
-  const osmdAvailable = !!lastScoreFile.xml;
-  // If OSMD is selected but xml is missing, fall back to webmscore silently
-  const renderer = (currentRenderer === 'osmd' && !osmdAvailable) ? 'webmscore' : currentRenderer;
-
-  document.querySelectorAll('.renderer-btn').forEach(b => {
-    b.disabled = b.dataset.renderer === 'osmd' && !osmdAvailable;
-    b.classList.toggle('active', b.dataset.renderer === renderer);
-  });
 
   let filePath, isMscz;
   if (renderer === 'webmscore') {
@@ -474,6 +498,7 @@ function setupZoomControls() {
 
 // Apply zoom level
 function applyZoom(zoomValue) {
+  if (currentRenderer === 'pdf') return;
   document.getElementById('zoomLevel').textContent = `${Math.round(zoomValue * 100)}%`;
   if (currentRenderer === 'webmscore') {
     if (lastSvgPages.length > 0) {
@@ -492,10 +517,10 @@ function setupRendererToggle() {
       const chosen = btn.dataset.renderer;
       if (chosen === currentRenderer || btn.disabled) return;
       currentRenderer = chosen;
-      // Reset OSMD instance when switching to webmscore so it re-attaches cleanly
-      if (chosen === 'webmscore') osmd = null;
-      // Clear any CSS transform applied by webmscore zoom when switching to OSMD
-      if (chosen === 'osmd') {
+      // Reset OSMD instance when switching away from osmd so it re-attaches cleanly
+      if (chosen !== 'osmd') osmd = null;
+      // Clear any CSS transform applied by webmscore zoom when switching to OSMD or PDF
+      if (chosen === 'osmd' || chosen === 'pdf') {
         const c = document.getElementById('osmdContainer');
         c.style.transform = '';
         c.style.transformOrigin = '';
@@ -610,8 +635,11 @@ function loadTune(tune, _skipUrlState) {
   // Show score in center if available, otherwise placeholder
   const msczPath = tune.score_mscz ? tune.score_mscz.split('/').map(encodeURIComponent).join('/') : null;
   const xmlPath = tune.score_musicxml ? tune.score_musicxml.split('/').map(encodeURIComponent).join('/') : null;
-  if (msczPath || xmlPath) {
-    lastScoreFile = { mscz: msczPath, xml: xmlPath, name: tune.name };
+  const pdfPath = tune.score_pdf ? tune.score_pdf.split('/').map(encodeURIComponent).join('/') : null;
+  if (msczPath || xmlPath || pdfPath) {
+    lastScoreFile = { mscz: msczPath, xml: xmlPath, pdf: pdfPath, name: tune.name };
+    // Default to pdf renderer when pdf is available (unless restoring from URL)
+    if (!_skipUrlState && pdfPath) currentRenderer = 'pdf';
     _applyRendererToScore();
   } else {
     showCenterPlaceholder(tune.name);

@@ -51,6 +51,30 @@
     {
       "name": "Charley Wilcoxon - The All American Drummer - 150 Rudimental Solos",
       "path": "../../.ref/books/Charley Wilcoxon - The All American Drummer - 150 Rudimental Solos.pdf"
+    },
+    {
+      "name": "Funkifying the Clave - Afro Cuban Grooves For Bass And Drums",
+      "path": "../../.ref/books/Funkifying the Clave - Afro Cuban Grooves For Bass And Drums.pdf"
+    },
+    {
+      "name": "Gary Chaffee - Sticking Pattern",
+      "path": "../../.ref/books/Gary Chaffee - Sticking Pattern.pdf"
+    },
+    {
+      "name": "Gary Chester - The New Breed",
+      "path": "../../.ref/books/Gary Chester - The New Breed.pdf"
+    },
+    {
+      "name": "Gary Chester, Chris Adams - The New Breed 2",
+      "path": "../../.ref/books/Gary Chester, Chris Adams - The New Breed 2.pdf"
+    },
+    {
+      "name": "John Riley - The Art of Bop Drumming",
+      "path": "../../.ref/books/John Riley - The Art of Bop Drumming.pdf"
+    },
+    {
+      "name": "Ted Reed - Syncopation For The Modern Drummer",
+      "path": "../../.ref/books/Ted Reed - Syncopation For The Modern Drummer.pdf"
     }
   ],
   "musics": [
@@ -95,7 +119,8 @@
         }
       ],
       "score_mscz": null,
-      "score_musicxml": null
+      "score_musicxml": null,
+      "score_pdf": null
     },
     {
       "name": "Al Jarreau - We're In This Love Together",
@@ -138,7 +163,8 @@
         }
       ],
       "score_mscz": "../../.ref/musics/Al Jarreau - We're In This Love Together/score.mscz",
-      "score_musicxml": "../../.ref/musics/Al Jarreau - We're In This Love Together/score.musicxml"
+      "score_musicxml": "../../.ref/musics/Al Jarreau - We're In This Love Together/score.musicxml",
+      "score_pdf": "../../.ref/musics/Al Jarreau - We're In This Love Together/score.pdf"
     },
     {
       "name": "Alfa Mist - Brian",
@@ -181,7 +207,122 @@
         }
       ],
       "score_mscz": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.mscz",
-      "score_musicxml": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.musicxml"
+      "score_musicxml": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.musicxml",
+      "score_pdf": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.pdf"
+    },
+    {
+      "name": "Breaking the codes",
+      "stems": [
+        {
+          "name": "Back in the day",
+          "label": "Back in the day",
+          "icon": "📀",
+          "path": "../../.ref/musics/Breaking the codes/Back in the day.mp3"
+        },
+        {
+          "name": "Page One",
+          "label": "Page one",
+          "icon": "📀",
+          "path": "../../.ref/musics/Breaking the codes/Page One.mp3"
+        },
+        {
+          "name": "Pocketful of Soul",
+          "label": "Pocketful of soul",
+          "icon": "📀",
+          "path": "../../.ref/musics/Breaking the codes/Pocketful of Soul.mp3"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null,
+      "score_pdf": "../../.ref/musics/Breaking the codes/David Garibaldi - Breaking The Codes.pdf"
+    },
+    {
+      "name": "Casiopea - Takarajima",
+      "stems": [
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/Casiopea - Takarajima/bass.wav"
+        },
+        {
+          "name": "Casiopea - Takarajima",
+          "label": "Casiopea - takarajima",
+          "icon": "📀",
+          "path": "../../.ref/musics/Casiopea - Takarajima/Casiopea - Takarajima.mp3"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/Casiopea - Takarajima/drums.wav"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/Casiopea - Takarajima/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/Casiopea - Takarajima/piano.wav"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/Casiopea - Takarajima/vocals.wav"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null,
+      "score_pdf": null
+    },
+    {
+      "name": "Cory Wong - Here To Stay",
+      "stems": [
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/Cory Wong - Here To Stay/bass.wav"
+        },
+        {
+          "name": "Cory Wong - Here To Stay",
+          "label": "Cory wong - here to stay",
+          "icon": "📀",
+          "path": "../../.ref/musics/Cory Wong - Here To Stay/Cory Wong - Here To Stay.mp3"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/Cory Wong - Here To Stay/drums.wav"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/Cory Wong - Here To Stay/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/Cory Wong - Here To Stay/piano.wav"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/Cory Wong - Here To Stay/vocals.wav"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null,
+      "score_pdf": null
     },
     {
       "name": "ETC - I Want to See You in a Negative Light",
@@ -224,7 +365,8 @@
         }
       ],
       "score_mscz": null,
-      "score_musicxml": null
+      "score_musicxml": null,
+      "score_pdf": null
     },
     {
       "name": "ETC - You Had Me at Hello",
@@ -267,7 +409,96 @@
         }
       ],
       "score_mscz": null,
-      "score_musicxml": null
+      "score_musicxml": null,
+      "score_pdf": null
+    },
+    {
+      "name": "Spyro Gyra - Catching the Sun",
+      "stems": [
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/Spyro Gyra - Catching the Sun/bass.wav"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/Spyro Gyra - Catching the Sun/drums.wav"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/Spyro Gyra - Catching the Sun/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/Spyro Gyra - Catching the Sun/piano.wav"
+        },
+        {
+          "name": "Spyro Gyra - Catching the Sun",
+          "label": "Spyro gyra - catching the sun",
+          "icon": "📀",
+          "path": "../../.ref/musics/Spyro Gyra - Catching the Sun/Spyro Gyra - Catching the Sun.mp3"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/Spyro Gyra - Catching the Sun/vocals.wav"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null,
+      "score_pdf": null
+    },
+    {
+      "name": "Spyro Gyra - Morning Dance",
+      "stems": [
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/Spyro Gyra - Morning Dance/bass.wav"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/Spyro Gyra - Morning Dance/drums.wav"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/Spyro Gyra - Morning Dance/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/Spyro Gyra - Morning Dance/piano.wav"
+        },
+        {
+          "name": "Spyro Gyra - Morning Dance",
+          "label": "Spyro gyra - morning dance",
+          "icon": "📀",
+          "path": "../../.ref/musics/Spyro Gyra - Morning Dance/Spyro Gyra - Morning Dance.mp3"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/Spyro Gyra - Morning Dance/vocals.wav"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null,
+      "score_pdf": null
     },
     {
       "name": "WIM - Dear Peach",
@@ -310,7 +541,8 @@
         }
       ],
       "score_mscz": null,
-      "score_musicxml": null
+      "score_musicxml": null,
+      "score_pdf": null
     },
     {
       "name": "WIM - Snacks & Wine",
@@ -353,7 +585,8 @@
         }
       ],
       "score_mscz": null,
-      "score_musicxml": null
+      "score_musicxml": null,
+      "score_pdf": null
     },
     {
       "name": "WIM - Two Of Us",
@@ -396,7 +629,8 @@
         }
       ],
       "score_mscz": null,
-      "score_musicxml": null
+      "score_musicxml": null,
+      "score_pdf": null
     }
   ]
 }

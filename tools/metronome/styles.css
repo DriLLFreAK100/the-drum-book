@@ -57,48 +57,59 @@ h2 {
     margin-bottom: 10px;
 }
 
-.knob {
-    width: 150px;
-    height: 150px;
+.knob-bezel {
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #ffffff, #e0e0e0);
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.2),
-        inset 0 2px 5px rgba(255, 255, 255, 0.5),
-        inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+    background: radial-gradient(circle at 38% 30%, #4a4a52, #18181c);
+    box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.55),
+        0 2px 6px rgba(0, 0, 0, 0.35),
+        inset 0 1px 3px rgba(255, 255, 255, 0.08),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.5);
+    border: 1.5px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.knob {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 36% 32%, #525258, #1c1c20 62%);
+    box-shadow:
+        inset 0 2px 4px rgba(255, 255, 255, 0.10),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.55),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.4);
     cursor: grab;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     user-select: none;
-    transition: box-shadow 0.2s;
+    transition: box-shadow 0.15s;
 }
 
-.knob-inner {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #f5f5f5, #d0d0d0);
-    position: relative;
-}
-
-.knob-marker {
-    width: 8px;
-    height: 45px;
-    background: linear-gradient(to right, #667eea, #764ba2);
-    border-radius: 4px;
+.knob-indicator {
+    width: 3px;
+    height: 44px;
+    background: linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0.25) 100%);
+    border-radius: 2px;
     position: absolute;
-    top: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
 }
 
 .knob:active {
     cursor: grabbing;
-    box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.3),
-        inset 0 2px 5px rgba(255, 255, 255, 0.5),
-        inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        inset 0 2px 4px rgba(255, 255, 255, 0.08),
+        inset 0 -3px 10px rgba(0, 0, 0, 0.65),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 
 .tempo-display {

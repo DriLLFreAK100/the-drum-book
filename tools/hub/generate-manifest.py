@@ -21,11 +21,13 @@ WORKSPACE_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..', '..'))
 # Paths relative to workspace root
 EXERCISES_DIR = os.path.join(WORKSPACE_ROOT, 'exercises')
 REF_DIR = os.path.join(WORKSPACE_ROOT, '.ref')
+BOOKS_DIR = os.path.join(WORKSPACE_ROOT, '.ref', 'books')
 MUSICS_DIR = os.path.join(WORKSPACE_ROOT, '.ref', 'musics')
 
 # Path prefix used by the hub (relative to tools/hub/)
 HUB_EXERCISES_PREFIX = '../../exercises'
 HUB_REF_PREFIX = '../../.ref'
+HUB_BOOKS_PREFIX = '../../.ref/books'
 HUB_MUSICS_PREFIX = '../../.ref/musics'
 
 AUDIO_EXTENSIONS = {'.wav', '.mp3', '.ogg', '.flac', '.m4a', '.aac'}
@@ -102,16 +104,15 @@ def scan_exercises() -> list:
 
 def scan_ref_books() -> list:
     books = []
-    if not os.path.isdir(REF_DIR):
+    if not os.path.isdir(BOOKS_DIR):
         return books
 
-    for root, _dirs, files in os.walk(REF_DIR):
+    for root, _dirs, files in os.walk(BOOKS_DIR):
         for file in sorted(files, key=natural_sort_key):
             if not file.lower().endswith('.pdf'):
                 continue
-            rel = os.path.relpath(os.path.join(root, file), WORKSPACE_ROOT)
             # Use forward slashes for the browser path
-            hub_path = f'{HUB_REF_PREFIX}/{os.path.relpath(os.path.join(root, file), REF_DIR)}'.replace(os.sep, '/')
+            hub_path = f'{HUB_BOOKS_PREFIX}/{os.path.relpath(os.path.join(root, file), BOOKS_DIR)}'.replace(os.sep, '/')
             books.append({
                 'name': os.path.splitext(file)[0],
                 'path': hub_path,
@@ -136,6 +137,8 @@ def scan_musics() -> list:
         score_mscz = None
         score_musicxml = None
 
+        score_pdf = None
+
         for file in sorted(os.listdir(folder_path), key=natural_sort_key):
             if file.startswith('.') or file.startswith('_'):
                 continue
@@ -154,16 +157,16 @@ def scan_musics() -> list:
                 score_mscz = f'{HUB_MUSICS_PREFIX}/{folder}/{file}'
             elif ext == '.musicxml':
                 score_musicxml = f'{HUB_MUSICS_PREFIX}/{folder}/{file}'
+            elif ext == '.pdf':
+                score_pdf = f'{HUB_MUSICS_PREFIX}/{folder}/{file}'
 
-        # Prefer .mscz (native MuseScore format, richer) over .musicxml
-        score = score_mscz or score_musicxml
-
-        if stems or score_mscz or score_musicxml:
+        if stems or score_mscz or score_musicxml or score_pdf:
             tunes.append({
                 'name': folder,
                 'stems': stems,
                 'score_mscz': score_mscz,
                 'score_musicxml': score_musicxml,
+                'score_pdf': score_pdf,
             })
 
     return tunes
