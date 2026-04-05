@@ -123,6 +123,20 @@ h2 {
     font-size: 2.5em;
     font-weight: bold;
     color: #667eea;
+    border: none;
+    background: transparent;
+    text-align: center;
+    width: 3.5ch;
+    outline: none;
+    cursor: text;
+}
+.bpm-value::-webkit-outer-spin-button,
+.bpm-value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.bpm-value[type=number] {
+    -moz-appearance: textfield;
 }
 
 .bpm-label {

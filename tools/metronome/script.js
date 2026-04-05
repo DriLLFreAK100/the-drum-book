@@ -401,7 +401,7 @@ function setupKnobControl() {
 
     // Visual rotation (shows infinite turns)
     document.getElementById('tempoKnob').style.transform = `rotate(${knobCurrentRotation}deg)`;
-    document.getElementById('bpmValue').textContent = metronomeState.tempo;
+    document.getElementById('bpmValue').value = metronomeState.tempo;
     _postStateToHub();
   }
 
@@ -530,6 +530,25 @@ function setupEventListeners() {
       }
       _postStateToHub();
     });
+  });
+
+  // BPM input
+  const bpmInput = document.getElementById('bpmValue');
+  bpmInput.addEventListener('input', () => {
+    const val = parseInt(bpmInput.value);
+    if (!isNaN(val) && val >= 40 && val <= 240) {
+      metronomeState.tempo = val;
+      applyTempoToKnob(val);
+      _postStateToHub();
+    }
+  });
+  bpmInput.addEventListener('change', () => {
+    let val = parseInt(bpmInput.value);
+    val = Math.max(40, Math.min(240, isNaN(val) ? 120 : val));
+    bpmInput.value = val;
+    metronomeState.tempo = val;
+    applyTempoToKnob(val);
+    _postStateToHub();
   });
 
   // Pitch range slider
@@ -906,7 +925,7 @@ window.addEventListener('message', (e) => {
 
   if (s.tempo) {
     metronomeState.tempo = s.tempo;
-    document.getElementById('bpmValue').textContent = s.tempo;
+    document.getElementById('bpmValue').value = s.tempo;
     applyTempoToKnob(s.tempo);
   }
   if (s.timeSig) {
