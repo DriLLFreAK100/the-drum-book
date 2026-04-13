@@ -1,3 +1,34 @@
+// ─── Theme ────────────────────────────────────────────────────────────────────
+// Shared via localStorage key 'theme'. Values: 'dark' (default) | 'light'.
+// Hub broadcasts changes to the embedded metronome iframe via postMessage.
+
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  const btn = document.getElementById('themeToggle');
+  if (btn) btn.textContent = theme === 'light' ? '🌙 Dark' : '☀ Light';
+}
+
+function setupTheme() {
+  const saved = localStorage.getItem('theme') || 'dark';
+  applyTheme(saved);
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    applyTheme(next);
+    localStorage.setItem('theme', next);
+    // Broadcast to metronome iframe
+    const iframe = document.querySelector('.metronome-iframe');
+    if (iframe && iframe.contentWindow) {
+      iframe.contentWindow.postMessage({ type: 'APPLY_THEME', theme: next }, '*');
+    }
+  });
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 // Store exercise data
 const exercises = {
   categories: []
@@ -21,7 +52,6 @@ let masterVolume = 1;
 let rafId = null;
 let leaderLabel = null;   // label of the primary audio element used for time tracking
 let autoScroll = true;    // scroll notation container in sync with playback
-// ─────────────────────────────────────────────────────────────────────────────
 
 // ─── URL State ────────────────────────────────────────────────────────────────
 // Persists app state in location.hash as a base64-encoded JSON blob so that
@@ -74,6 +104,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const manifest = await loadManifest();
     container.innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">Select an exercise to begin</div>';
     populateExercises(manifest);
+    setupTheme();
     setupZoomControls();
     setupRendererToggle();
     setupAutoScrollToggle();
@@ -256,6 +287,7 @@ function populateExercises(manifest) {
     item.dataset.path = book.path;
     item.dataset.name = book.name;
     item.dataset.type = 'pdf';
+    if (book.pages) item.dataset.pages = book.pages;
 
     item.addEventListener('click', () => {
       document.querySelectorAll('.exercise-item').forEach(i => i.classList.remove('active'));
@@ -358,16 +390,19 @@ function _applyRendererToScore() {
     // Show PDF view
     document.getElementById('osmdContainer').style.display = 'none';
     document.getElementById('pdfContainer').style.display = '';
-    document.getElementById('zoomInBtn').style.display = 'none';
-    document.getElementById('zoomOutBtn').style.display = 'none';
-    document.getElementById('zoomLevel').style.display = 'none';
-    const encodedPath = lastScoreFile.pdf.split('/').map(s => encodeURIComponent(s)).join('/');
-    document.getElementById('pdfFrame').src = encodedPath;
+    document.getElementById('zoomInBtn').style.display = '';
+    document.getElementById('zoomOutBtn').style.display = '';
+    document.getElementById('zoomLevel').style.display = '';
+    const pdfContainer = document.getElementById('pdfContainer');
+    renderPdfWithPdfjs(lastScoreFile.pdf, pdfContainer).catch(err => {
+      pdfContainer.innerHTML = `<div style="padding:20px;color:#d32f2f;text-align:center">Error loading PDF<br><small>${err.message}</small></div>`;
+    });
     return;
   }
 
   // Switch to notation view
   document.getElementById('pdfContainer').style.display = 'none';
+  _loadedPdfDoc = null;
   document.getElementById('osmdContainer').style.display = '';
   document.getElementById('zoomInBtn').style.display = '';
   document.getElementById('zoomOutBtn').style.display = '';
@@ -465,20 +500,77 @@ async function renderWithOsmd(filePath, container) {
   osmd.render();
 }
 
+// Render a PDF using PDF.js — appends one <canvas> per page into container.
+// container is the #pdfContainer div; it must have overflow-y:auto set in CSS.
+let _pdfRenderToken = 0;  // incremented each load so stale renders abort early
+let _loadedPdfDoc = null; // cached pdf document for zoom re-renders without re-fetching
+
+async function renderPdfWithPdfjs(filePath, container) {
+  const token = ++_pdfRenderToken;
+  container.innerHTML = '<div style="padding:40px;text-align:center;color:#999;">Loading PDF…</div>';
+
+  // pdf.min.js exposes pdfjsLib as a global; point its worker to our local copy.
+  const lib = window.pdfjsLib;
+  if (!lib) throw new Error('PDF.js not loaded');
+  lib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
+
+  const pdf = await lib.getDocument(filePath).promise;
+  if (token !== _pdfRenderToken) return;  // superseded by a newer load
+
+  _loadedPdfDoc = pdf;
+  container.innerHTML = '';  // clear "Loading PDF…"
+  await _drawPdfPages(pdf, container, token);
+}
+
+// Re-render cached PDF at current zoom — called by applyZoom when in PDF view.
+async function _drawPdfPages(pdf, container, token) {
+  container.innerHTML = '';
+  const zoomFactor = currentZoom / 100;
+
+  for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+    if (token !== _pdfRenderToken) return;  // superseded
+
+    const page = await pdf.getPage(pageNum);
+    // Base scale fits page to container width; zoomFactor scales on top of that.
+    const containerWidth = container.clientWidth || 800;
+    const viewport = page.getViewport({ scale: 1 });
+    const baseScale = (containerWidth - 24) / viewport.width;
+    const scaledViewport = page.getViewport({ scale: baseScale * zoomFactor });
+
+    const pageWrapper = document.createElement('div');
+    pageWrapper.className = 'score-page pdf-page';
+    pageWrapper.style.marginBottom = '8px';
+
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.floor(scaledViewport.width);
+    canvas.height = Math.floor(scaledViewport.height);
+    canvas.style.display = 'block';
+    canvas.style.width = canvas.width + 'px';
+    canvas.style.height = canvas.height + 'px';
+
+    pageWrapper.appendChild(canvas);
+    container.appendChild(pageWrapper);
+
+    await page.render({ canvasContext: canvas.getContext('2d'), viewport: scaledViewport }).promise;
+  }
+}
+
 // Load and display a PDF reference book
 function loadPdf(filePath, bookName, _skipUrlState) {
   if (!_skipUrlState) urlStateSet({ item: { type: 'pdf', id: filePath } });
   // Switch to PDF view
   document.getElementById('osmdContainer').style.display = 'none';
   document.getElementById('pdfContainer').style.display = '';
-  document.getElementById('zoomInBtn').style.display = 'none';
-  document.getElementById('zoomOutBtn').style.display = 'none';
-  document.getElementById('zoomLevel').style.display = 'none';
+  document.getElementById('zoomInBtn').style.display = '';
+  document.getElementById('zoomOutBtn').style.display = '';
+  document.getElementById('zoomLevel').style.display = '';
 
   document.getElementById('currentExercise').textContent = bookName;
 
-  const encodedPath = filePath.split('/').map(segment => encodeURIComponent(segment)).join('/');
-  document.getElementById('pdfFrame').src = encodedPath;
+  const pdfContainer = document.getElementById('pdfContainer');
+  renderPdfWithPdfjs(filePath, pdfContainer).catch(err => {
+    pdfContainer.innerHTML = `<div style="padding:20px;color:#d32f2f;text-align:center">Error loading PDF<br><small>${err.message}</small></div>`;
+  });
 }
 
 // Setup zoom controls
@@ -498,8 +590,15 @@ function setupZoomControls() {
 
 // Apply zoom level
 function applyZoom(zoomValue) {
-  if (currentRenderer === 'pdf') return;
   document.getElementById('zoomLevel').textContent = `${Math.round(zoomValue * 100)}%`;
+  if (currentRenderer === 'pdf') {
+    if (_loadedPdfDoc) {
+      const token = ++_pdfRenderToken;
+      const container = document.getElementById('pdfContainer');
+      _drawPdfPages(_loadedPdfDoc, container, token);
+    }
+    return;
+  }
   if (currentRenderer === 'webmscore') {
     if (lastSvgPages.length > 0) {
       _renderSvgPages(document.getElementById('osmdContainer'), zoomValue);
@@ -823,10 +922,18 @@ function startRAF() {
     const pos = getCurrentPosition();
     updateSeekUI(pos);
     if (autoScroll && playerDuration > 0) {
-      const container = document.querySelector('.notation-container');
-      if (container) {
-        const maxScroll = container.scrollHeight - container.clientHeight;
-        container.scrollTop = (pos / playerDuration) * maxScroll;
+      // ── Notation view auto-scroll ──────────────────────────────────────────
+      const notationContainer = document.querySelector('.notation-container');
+      if (notationContainer) {
+        const maxScroll = notationContainer.scrollHeight - notationContainer.clientHeight;
+        notationContainer.scrollTop = (pos / playerDuration) * maxScroll;
+      }
+      // ── PDF view auto-scroll ───────────────────────────────────────────────
+      // PDF pages are rendered as stacked canvases so scrollTop works identically.
+      const pdfContainer = document.getElementById('pdfContainer');
+      if (pdfContainer && pdfContainer.style.display !== 'none') {
+        const maxScroll = pdfContainer.scrollHeight - pdfContainer.clientHeight;
+        if (maxScroll > 0) pdfContainer.scrollTop = (pos / playerDuration) * maxScroll;
       }
     }
     rafId = requestAnimationFrame(tick);
@@ -913,8 +1020,13 @@ function showCenterPlaceholder(name) {
 window.addEventListener('message', (e) => {
   if (!e.data) return;
   if (e.data.type === 'METRONOME_READY') {
+    const iframe = document.querySelector('.metronome-iframe');
+    // Send current theme so the iframe matches from the start
+    if (iframe && iframe.contentWindow) {
+      const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      iframe.contentWindow.postMessage({ type: 'APPLY_THEME', theme }, '*');
+    }
     if (_pendingMetronomeRestore) {
-      const iframe = document.querySelector('.metronome-iframe');
       if (iframe) {
         iframe.contentWindow.postMessage(
           { type: 'RESTORE_STATE', state: _pendingMetronomeRestore }, '*'

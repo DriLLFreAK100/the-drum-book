@@ -1,3 +1,64 @@
+/* ============================================================
+   Design Tokens — Dark (default) & Light theme
+   ============================================================ */
+:root {
+  --bg-base:        #0f0f12;
+  --bg-surface:     #18181c;
+  --bg-elevated:    #1f1f24;
+  --bg-panel:       #242428;
+  --bg-interactive: #2c2c32;
+  --bg-hover:       #36363e;
+  --border-subtle:  rgba(255, 255, 255, 0.05);
+  --border-default: rgba(255, 255, 255, 0.09);
+  --border-strong:  rgba(255, 255, 255, 0.17);
+  --text-primary:   #e2e2ea;
+  --text-secondary: #8c8ca8;
+  --text-muted:     #52526a;
+  --text-inverse:   #0f0f12;
+  --accent:         #4fa8d4;
+  --accent-dim:     #3889b0;
+  --accent-glow:    rgba(79, 168, 212, 0.22);
+  --accent-subtle:  rgba(79, 168, 212, 0.10);
+  --accent-gradient: linear-gradient(135deg, #4fa8d4 0%, #2d7aa8 100%);
+  --danger:         #e06868;
+  --danger-subtle:  rgba(224, 104, 104, 0.14);
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.7);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+}
+
+[data-theme="light"] {
+  --bg-base:        #e6e6ed;
+  --bg-surface:     #f4f4f8;
+  --bg-elevated:    #ffffff;
+  --bg-panel:       #ededf2;
+  --bg-interactive: #e0e0e8;
+  --bg-hover:       #d3d3dc;
+  --border-subtle:  rgba(0, 0, 0, 0.05);
+  --border-default: rgba(0, 0, 0, 0.09);
+  --border-strong:  rgba(0, 0, 0, 0.18);
+  --text-primary:   #111118;
+  --text-secondary: #50506a;
+  --text-muted:     #9090a8;
+  --text-inverse:   #ffffff;
+  --accent:         #2a7db5;
+  --accent-dim:     #1a6496;
+  --accent-glow:    rgba(42, 125, 181, 0.20);
+  --accent-subtle:  rgba(42, 125, 181, 0.08);
+  --accent-gradient: linear-gradient(135deg, #2a7db5 0%, #1a6496 100%);
+  --danger:         #c43a3a;
+  --danger-subtle:  rgba(196, 58, 58, 0.10);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.14);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
 * {
     margin: 0;
     padding: 0;
@@ -5,45 +66,77 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg-base);
+    color: var(--text-primary);
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding: 20px;
+    transition: background 0.2s, color 0.2s;
 }
 
 .container {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    padding: 40px;
+    background: var(--bg-surface);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-subtle);
+    padding: 36px 32px;
     max-width: 600px;
     width: 100%;
+    position: relative;
 }
 
 h1 {
     text-align: center;
-    color: #333;
-    margin-bottom: 40px;
-    font-size: 2.5em;
+    color: var(--text-primary);
+    margin-bottom: 36px;
+    font-size: 2.2em;
+    letter-spacing: -0.02em;
 }
 
 h2 {
-    color: #555;
-    font-size: 1.2em;
-    margin-bottom: 20px;
-    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    text-align: left;
+}
+
+/* Theme toggle */
+.theme-toggle {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px 9px;
+    font-size: 0.75em;
+    font-weight: 600;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.theme-toggle:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-strong);
+    color: var(--text-primary);
 }
 
 .control-panel {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 36px;
 }
 
-/* Tempo Section */
+/* ============================================================
+   Tempo Section
+   ============================================================ */
 .tempo-section {
     display: flex;
     flex-direction: column;
@@ -57,6 +150,7 @@ h2 {
     margin-bottom: 10px;
 }
 
+/* Knob — preserved exactly from original */
 .knob-bezel {
     width: 200px;
     height: 200px;
@@ -122,7 +216,7 @@ h2 {
 .bpm-value {
     font-size: 2.5em;
     font-weight: bold;
-    color: #667eea;
+    color: var(--accent);
     border: none;
     background: transparent;
     text-align: center;
@@ -140,166 +234,174 @@ h2 {
 }
 
 .bpm-label {
-    font-size: 0.9em;
-    color: #999;
-    letter-spacing: 1px;
+    font-size: 0.85em;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
-/* Time Signature Section */
-.time-sig-section {
+/* ============================================================
+   Section layouts
+   ============================================================ */
+.time-sig-section,
+.sound-palette-section,
+.pitch-section,
+.beat-tones-section {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 14px;
 }
 
+/* ============================================================
+   Time Signature
+   ============================================================ */
 .time-sig-buttons {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 10px;
+    gap: 8px;
 }
 
 .time-sig-btn {
-    padding: 12px 16px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    background: white;
-    color: #555;
+    padding: 10px 14px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    background: var(--bg-panel);
+    color: var(--text-secondary);
     font-size: 0.95em;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .time-sig-btn:hover {
-    border-color: #667eea;
-    color: #667eea;
+    background: var(--bg-hover);
+    border-color: var(--border-strong);
+    color: var(--text-primary);
 }
 
 .time-sig-btn.active {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    border-color: transparent;
+    background: var(--accent);
+    color: var(--text-inverse);
+    border-color: var(--accent);
+    font-weight: 700;
 }
 
 .accent-toggle {
-    margin-top: 10px;
+    margin-top: 4px;
 }
 
 .accent-first-beat-btn {
     padding: 8px 16px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    background: white;
-    color: #555;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    background: var(--bg-panel);
+    color: var(--text-secondary);
     font-size: 0.9em;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .accent-first-beat-btn:hover {
-    border-color: #667eea;
-    color: #667eea;
+    background: var(--bg-hover);
+    border-color: var(--border-strong);
+    color: var(--text-primary);
 }
 
 .accent-first-beat-btn.active {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    border-color: transparent;
+    background: var(--accent);
+    color: var(--text-inverse);
+    border-color: var(--accent);
+    font-weight: 700;
 }
 
-/* Sound Palette Section */
-.sound-palette-section {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
+/* ============================================================
+   Sound Palette
+   ============================================================ */
 .sound-palette-buttons {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-    gap: 10px;
+    gap: 8px;
 }
 
 .sound-palette-btn {
-    padding: 12px 16px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    background: white;
-    color: #555;
-    font-size: 0.95em;
+    padding: 10px 14px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    background: var(--bg-panel);
+    color: var(--text-secondary);
+    font-size: 0.9em;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .sound-palette-btn:hover {
-    border-color: #667eea;
-    color: #667eea;
+    background: var(--bg-hover);
+    border-color: var(--border-strong);
+    color: var(--text-primary);
 }
 
 .sound-palette-btn.active {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    border-color: transparent;
-}
-.pitch-section {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    background: var(--accent);
+    color: var(--text-inverse);
+    border-color: var(--accent);
+    font-weight: 700;
 }
 
+/* ============================================================
+   Pitch Section
+   ============================================================ */
 .pitch-control {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 14px;
 }
 
 .pitch-control input[type="range"] {
     flex: 1;
-    height: 8px;
-    border-radius: 4px;
-    background: linear-gradient(to right, #667eea, #764ba2);
+    height: 4px;
+    border-radius: 2px;
+    background: var(--bg-hover);
     outline: none;
     -webkit-appearance: none;
+    cursor: pointer;
+    accent-color: var(--accent);
 }
 
 .pitch-control input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background: white;
+    background: var(--accent);
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    border: 2px solid #667eea;
+    box-shadow: 0 0 6px var(--accent-glow);
+    border: 2px solid var(--bg-surface);
 }
 
 .pitch-control input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background: white;
+    background: var(--accent);
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    border: 2px solid #667eea;
+    box-shadow: 0 0 6px var(--accent-glow);
+    border: 2px solid var(--bg-surface);
 }
 
 .pitch-value {
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 600;
-    color: #667eea;
+    color: var(--accent);
     min-width: 50px;
+    text-align: right;
 }
 
-/* Beat Tones Section */
-.beat-tones-section {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
+/* ============================================================
+   Beat Tones Section
+   ============================================================ */
 .beat-tones-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
@@ -309,37 +411,38 @@ h2 {
 .beat-tone-btn {
     width: 100%;
     aspect-ratio: 1;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    background: white;
-    color: #555;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    background: var(--bg-panel);
+    color: var(--text-secondary);
     font-size: 0.85em;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
     padding: 4px;
 }
 
 .beat-tone-btn:hover {
-    border-color: #667eea;
-    color: #667eea;
+    background: var(--bg-hover);
+    border-color: var(--border-strong);
+    color: var(--text-primary);
 }
 
 .beat-tone-btn.accent {
-    border-color: #ff6b6b;
+    border-color: var(--danger);
 }
 
 .beat-tone-btn.set {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    border-color: transparent;
+    background: var(--accent);
+    color: var(--text-inverse);
+    border-color: var(--accent);
 }
 
 .beat-tone-btn.muted {
-    background: #f5f5f5;
-    color: #999;
-    opacity: 0.6;
-    border-color: #ccc;
+    background: var(--bg-interactive);
+    color: var(--text-muted);
+    opacity: 0.55;
+    border-color: var(--border-subtle);
     position: relative;
 }
 
@@ -348,59 +451,63 @@ h2 {
     position: absolute;
     width: 70%;
     height: 2px;
-    background: #999;
+    background: var(--text-muted);
     top: 50%;
     left: 15%;
     transform: translateY(-50%);
 }
 
 .beat-tones-hint {
-    font-size: 0.8em;
-    color: #999;
+    font-size: 0.78em;
+    color: var(--text-muted);
     text-align: center;
 }
 
-/* Playback Section */
+/* ============================================================
+   Playback Section
+   ============================================================ */
 .playback-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 12px;
 }
 
 .play-btn,
 .stop-btn {
-    padding: 16px 24px;
+    padding: 14px 24px;
     border: none;
-    border-radius: 10px;
-    font-size: 1.1em;
-    font-weight: 600;
+    border-radius: var(--radius-lg);
+    font-size: 1.05em;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
 }
 
 .play-btn {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
+    background: var(--accent);
+    color: var(--text-inverse);
+    border: 1px solid var(--accent);
 }
 
 .play-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+    background: var(--accent-dim);
+    box-shadow: 0 4px 18px var(--accent-glow);
 }
 
 .play-btn:active {
-    transform: translateY(0);
+    transform: translateY(1px);
 }
 
 .stop-btn {
-    background: #f0f0f0;
-    color: #555;
-    border: 2px solid #ddd;
+    background: var(--bg-interactive);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-default);
 }
 
 .stop-btn:hover {
-    background: #e0e0e0;
-    border-color: #999;
+    background: var(--bg-hover);
+    border-color: var(--border-strong);
+    color: var(--text-primary);
 }
 
 .stop-btn:active {
@@ -409,19 +516,21 @@ h2 {
 
 .keyboard-hint {
     grid-column: 1 / -1;
-    font-size: 0.8em;
-    color: #999;
+    font-size: 0.78em;
+    color: var(--text-muted);
     text-align: center;
-    margin: -10px 0 0 0;
+    margin: -6px 0 0;
 }
 
-/* Beat Indicator */
+/* ============================================================
+   Beat Indicator
+   ============================================================ */
 .beat-indicator {
-    margin-top: 40px;
+    margin-top: 36px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 14px;
 }
 
 .beat-display {
@@ -437,31 +546,36 @@ h2 {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #e0e0e0;
-    transition: all 0.1s;
+    background: var(--bg-interactive);
+    border: 1px solid var(--border-default);
+    transition: background 0.08s, box-shadow 0.08s, transform 0.08s;
 }
 
 .beat-dot.active {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 14px var(--accent-glow);
     transform: scale(1.3);
 }
 
 .beat-dot.accent {
-    background: #ff6b6b;
-    width: 28px;
-    height: 28px;
+    background: var(--danger-subtle);
+    border-color: var(--danger);
+    width: 26px;
+    height: 26px;
 }
 
 .beat-dot.accent.active {
-    background: #ff6b6b;
-    box-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
+    background: var(--danger);
+    border-color: var(--danger);
+    box-shadow: 0 0 18px rgba(224, 104, 104, 0.55);
     transform: scale(1.2);
 }
 
 .beat-dot.muted {
-    background: #ddd;
-    opacity: 0.4;
+    background: var(--bg-interactive);
+    border-color: var(--border-subtle);
+    opacity: 0.35;
     position: relative;
 }
 
@@ -470,37 +584,36 @@ h2 {
     position: absolute;
     width: 60%;
     height: 2px;
-    background: #999;
+    background: var(--text-muted);
     top: 50%;
     left: 20%;
     transform: translateY(-50%);
 }
 
 .beat-label {
-    font-size: 0.9em;
-    color: #999;
+    font-size: 0.85em;
+    color: var(--text-muted);
     text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
-/* Responsive */
+/* ============================================================
+   Responsive
+   ============================================================ */
 @media (max-width: 600px) {
     .container {
-        padding: 30px;
+        padding: 24px 18px;
     }
 
     h1 {
-        font-size: 1.8em;
-        margin-bottom: 30px;
+        font-size: 1.7em;
+        margin-bottom: 28px;
     }
 
     .knob {
-        width: 120px;
-        height: 120px;
-    }
-
-    .knob-inner {
-        width: 110px;
-        height: 110px;
+        width: 220px;
+        height: 220px;
     }
 
     .bpm-value {
@@ -509,9 +622,5 @@ h2 {
 
     .time-sig-buttons {
         grid-template-columns: repeat(3, 1fr);
-    }
-
-    .tone-buttons {
-        grid-template-columns: repeat(2, 1fr);
     }
 }

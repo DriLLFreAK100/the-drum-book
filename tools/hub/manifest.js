@@ -47,35 +47,43 @@ window.MANIFEST = {
   "refBooks": [
     {
       "name": "Charley Wilcoxon - Modern Rudimental Swing Solos for the Advanced Drummer",
-      "path": "../../.ref/books/Charley Wilcoxon - Modern Rudimental Swing Solos for the Advanced Drummer.pdf"
+      "path": "../../.ref/books/Charley Wilcoxon - Modern Rudimental Swing Solos for the Advanced Drummer.pdf",
+      "pages": 47
     },
     {
       "name": "Charley Wilcoxon - The All American Drummer - 150 Rudimental Solos",
-      "path": "../../.ref/books/Charley Wilcoxon - The All American Drummer - 150 Rudimental Solos.pdf"
+      "path": "../../.ref/books/Charley Wilcoxon - The All American Drummer - 150 Rudimental Solos.pdf",
+      "pages": 92
     },
     {
       "name": "Funkifying the Clave - Afro Cuban Grooves For Bass And Drums",
-      "path": "../../.ref/books/Funkifying the Clave - Afro Cuban Grooves For Bass And Drums.pdf"
+      "path": "../../.ref/books/Funkifying the Clave - Afro Cuban Grooves For Bass And Drums.pdf",
+      "pages": 62
     },
     {
       "name": "Gary Chaffee - Sticking Pattern",
-      "path": "../../.ref/books/Gary Chaffee - Sticking Pattern.pdf"
+      "path": "../../.ref/books/Gary Chaffee - Sticking Pattern.pdf",
+      "pages": 36
     },
     {
       "name": "Gary Chester - The New Breed",
-      "path": "../../.ref/books/Gary Chester - The New Breed.pdf"
+      "path": "../../.ref/books/Gary Chester - The New Breed.pdf",
+      "pages": 52
     },
     {
       "name": "Gary Chester, Chris Adams - The New Breed 2",
-      "path": "../../.ref/books/Gary Chester, Chris Adams - The New Breed 2.pdf"
+      "path": "../../.ref/books/Gary Chester, Chris Adams - The New Breed 2.pdf",
+      "pages": 92
     },
     {
       "name": "John Riley - The Art of Bop Drumming",
-      "path": "../../.ref/books/John Riley - The Art of Bop Drumming.pdf"
+      "path": "../../.ref/books/John Riley - The Art of Bop Drumming.pdf",
+      "pages": 80
     },
     {
       "name": "Ted Reed - Syncopation For The Modern Drummer",
-      "path": "../../.ref/books/Ted Reed - Syncopation For The Modern Drummer.pdf"
+      "path": "../../.ref/books/Ted Reed - Syncopation For The Modern Drummer.pdf",
+      "pages": 64
     }
   ],
   "musics": [
@@ -165,7 +173,8 @@ window.MANIFEST = {
       ],
       "score_mscz": "../../.ref/musics/Al Jarreau - We're In This Love Together/score.mscz",
       "score_musicxml": "../../.ref/musics/Al Jarreau - We're In This Love Together/score.musicxml",
-      "score_pdf": "../../.ref/musics/Al Jarreau - We're In This Love Together/score.pdf"
+      "score_pdf": "../../.ref/musics/Al Jarreau - We're In This Love Together/score.pdf",
+      "score_pdf_pages": 2
     },
     {
       "name": "Alfa Mist - Brian",
@@ -209,7 +218,8 @@ window.MANIFEST = {
       ],
       "score_mscz": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.mscz",
       "score_musicxml": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.musicxml",
-      "score_pdf": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.pdf"
+      "score_pdf": "../../.ref/musics/Alfa Mist - Brian/Alfa Mist - Brian.pdf",
+      "score_pdf_pages": 2
     },
     {
       "name": "Breaking the codes",
@@ -235,7 +245,8 @@ window.MANIFEST = {
       ],
       "score_mscz": null,
       "score_musicxml": null,
-      "score_pdf": "../../.ref/musics/Breaking the codes/David Garibaldi - Breaking The Codes.pdf"
+      "score_pdf": "../../.ref/musics/Breaking the codes/David Garibaldi - Breaking The Codes.pdf",
+      "score_pdf_pages": 48
     },
     {
       "name": "Casiopea - Takarajima",

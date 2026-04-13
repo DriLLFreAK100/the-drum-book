@@ -1,3 +1,30 @@
+// ─── Theme ────────────────────────────────────────────────────────────────────
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  const btn = document.getElementById('themeToggle');
+  if (btn) btn.textContent = theme === 'light' ? '🌙 Dark' : '☀ Light';
+  localStorage.setItem('theme', theme);
+}
+
+function setupTheme() {
+  const saved = localStorage.getItem('theme') || 'dark';
+  applyTheme(saved);
+
+  const btn = document.getElementById('themeToggle');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+      // If running as standalone (not in iframe), no need to notify parent
+    });
+  }
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 // Audio context
 let audioContext = null;
 
@@ -725,13 +752,15 @@ function addModalStyles() {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: white;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
       border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
       z-index: 1001;
       max-width: 400px;
       width: 90%;
+      color: var(--text-primary);
     }
 
     .modal-overlay {
@@ -740,12 +769,12 @@ function addModalStyles() {
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.65);
       z-index: 1000;
     }
 
     .modal-content h3 {
-      color: #333;
+      color: var(--text-primary);
       margin-bottom: 20px;
       text-align: center;
     }
@@ -758,7 +787,7 @@ function addModalStyles() {
     .modal-presets p,
     .modal-custom p {
       font-size: 0.9em;
-      color: #666;
+      color: var(--text-secondary);
       margin-bottom: 10px;
       font-weight: 600;
     }
@@ -771,18 +800,19 @@ function addModalStyles() {
 
     .preset-btn {
       padding: 10px;
-      border: 2px solid #ddd;
+      border: 1px solid var(--border-default);
       border-radius: 6px;
-      background: white;
-      color: #555;
+      background: var(--bg-panel);
+      color: var(--text-secondary);
       font-size: 0.85em;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
     }
 
     .preset-btn:hover {
-      border-color: #667eea;
-      color: #667eea;
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-subtle);
     }
 
     .modal-custom {
@@ -793,10 +823,11 @@ function addModalStyles() {
 
     .modal-custom input[type="range"] {
       flex: 1;
-      height: 6px;
-      background: linear-gradient(to right, #667eea, #764ba2);
-      border-radius: 3px;
+      height: 4px;
+      background: var(--bg-hover);
+      border-radius: 2px;
       -webkit-appearance: none;
+      accent-color: var(--accent);
     }
 
     .modal-custom input[type="range"]::-webkit-slider-thumb {
@@ -804,8 +835,8 @@ function addModalStyles() {
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: white;
-      border: 2px solid #667eea;
+      background: var(--accent);
+      border: 2px solid var(--bg-elevated);
       cursor: pointer;
     }
 
@@ -813,15 +844,15 @@ function addModalStyles() {
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: white;
-      border: 2px solid #667eea;
+      background: var(--accent);
+      border: 2px solid var(--bg-elevated);
       cursor: pointer;
     }
 
     .custom-pitch-value {
       min-width: 40px;
       font-weight: 600;
-      color: #667eea;
+      color: var(--accent);
     }
 
     .modal-actions {
@@ -833,41 +864,42 @@ function addModalStyles() {
 
     .modal-btn {
       padding: 10px;
-      border: 2px solid #ddd;
+      border: 1px solid var(--border-default);
       border-radius: 6px;
-      background: white;
-      color: #555;
+      background: var(--bg-panel);
+      color: var(--text-secondary);
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
     }
 
     .modal-btn:hover {
-      border-color: #667eea;
-      color: #667eea;
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-subtle);
     }
 
     .modal-clear {
-      background: #ffe0e0;
-      border-color: #ff6b6b;
-      color: #ff6b6b;
+      background: var(--danger-subtle);
+      border-color: var(--danger);
+      color: var(--danger);
     }
 
     .preview-btn {
       width: 100%;
       padding: 10px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
+      background: var(--accent);
+      color: var(--text-inverse);
       border: none;
       border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: background 0.2s, box-shadow 0.2s;
     }
 
     .preview-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      background: var(--accent-dim);
+      box-shadow: 0 4px 12px var(--accent-glow);
     }
   `;
   document.head.appendChild(style);
@@ -875,6 +907,7 @@ function addModalStyles() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+  setupTheme();
   addModalStyles();
   setupKnobControl();
   setupEventListeners();
@@ -885,6 +918,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Signal hub that the metronome iframe is ready to receive RESTORE_STATE
   if (window.parent !== window) {
     window.parent.postMessage({ type: 'METRONOME_READY' }, '*');
+  }
+});
+
+// Listen for theme / state messages from parent hub
+window.addEventListener('message', (e) => {
+  if (!e.data) return;
+  if (e.data.type === 'APPLY_THEME') {
+    applyTheme(e.data.theme);
   }
 });
 

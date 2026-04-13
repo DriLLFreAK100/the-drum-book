@@ -102,6 +102,23 @@ def scan_exercises() -> list:
     return categories
 
 
+def count_pdf_pages(pdf_path: str) -> int:
+    """Return the total page count of a PDF file.
+
+    Uses a pure-stdlib approach: find the largest /Count N value in the raw
+    bytes of the PDF. The root /Pages dictionary carries the total; other
+    intermediate /Pages nodes carry subtotals, so the maximum is the answer.
+    Falls back to 0 (unknown) when the file cannot be read or parsed.
+    """
+    try:
+        with open(pdf_path, 'rb') as f:
+            data = f.read()
+        counts = [int(m) for m in re.findall(rb'/Count\s+(\d+)', data)]
+        return max(counts) if counts else 0
+    except Exception:
+        return 0
+
+
 def scan_ref_books() -> list:
     books = []
     if not os.path.isdir(BOOKS_DIR):
@@ -112,11 +129,16 @@ def scan_ref_books() -> list:
             if not file.lower().endswith('.pdf'):
                 continue
             # Use forward slashes for the browser path
-            hub_path = f'{HUB_BOOKS_PREFIX}/{os.path.relpath(os.path.join(root, file), BOOKS_DIR)}'.replace(os.sep, '/')
-            books.append({
+            abs_path = os.path.join(root, file)
+            hub_path = f'{HUB_BOOKS_PREFIX}/{os.path.relpath(abs_path, BOOKS_DIR)}'.replace(os.sep, '/')
+            entry = {
                 'name': os.path.splitext(file)[0],
                 'path': hub_path,
-            })
+            }
+            pages = count_pdf_pages(abs_path)
+            if pages:
+                entry['pages'] = pages
+            books.append(entry)
 
     return books
 
@@ -136,8 +158,8 @@ def scan_musics() -> list:
         stems = []
         score_mscz = None
         score_musicxml = None
-
         score_pdf = None
+        score_pdf_abs = None
 
         for file in sorted(os.listdir(folder_path), key=natural_sort_key):
             if file.startswith('.') or file.startswith('_'):
@@ -159,15 +181,21 @@ def scan_musics() -> list:
                 score_musicxml = f'{HUB_MUSICS_PREFIX}/{folder}/{file}'
             elif ext == '.pdf':
                 score_pdf = f'{HUB_MUSICS_PREFIX}/{folder}/{file}'
+                score_pdf_abs = os.path.join(folder_path, file)
 
         if stems or score_mscz or score_musicxml or score_pdf:
-            tunes.append({
+            tune: dict = {
                 'name': folder,
                 'stems': stems,
                 'score_mscz': score_mscz,
                 'score_musicxml': score_musicxml,
                 'score_pdf': score_pdf,
-            })
+            }
+            if score_pdf:
+                pages = count_pdf_pages(score_pdf_abs)
+                if pages:
+                    tune['score_pdf_pages'] = pages
+            tunes.append(tune)
 
     return tunes
 

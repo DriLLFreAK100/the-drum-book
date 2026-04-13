@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Drum Book Practice Hub</title>
     <link rel="stylesheet" href="styles.css" />
+    <!-- PDF.js (Mozilla) — renders PDFs natively without browser plugin -->
+    <script src="pdf.min.js"></script>
     <!-- OpenSheetMusicDisplay (OSMD) -->
     <script src="opensheetmusicdisplay.min.js"></script>
     <!-- WebMscore (MuseScore WebAssembly renderer) -->
@@ -17,7 +19,16 @@
       <!-- Sidebar: Exercise Browser -->
       <aside class="sidebar">
         <div class="sidebar-header">
-          <h1>📚 Exercises</h1>
+          <div class="sidebar-header-row">
+            <h1>📚 Exercises</h1>
+            <button
+              class="theme-toggle"
+              id="themeToggle"
+              title="Toggle light/dark theme"
+            >
+              ☀ Light
+            </button>
+          </div>
           <div class="sidebar-search">
             <input
               type="search"
@@ -62,9 +73,11 @@
           </div>
         </div>
         <div id="osmdContainer" class="notation-container"></div>
-        <div id="pdfContainer" class="pdf-container" style="display: none">
-          <iframe id="pdfFrame" class="pdf-frame"></iframe>
-        </div>
+        <div
+          id="pdfContainer"
+          class="pdf-container"
+          style="display: none"
+        ></div>
       </main>
 
       <!-- Right: Metronome + Music Player -->
