@@ -153,6 +153,12 @@ window.MANIFEST = {
           "path": "../../.ref/musics/Al Jarreau - We're In This Love Together/drums.wav"
         },
         {
+          "name": "mix",
+          "label": "Mix",
+          "icon": "📀",
+          "path": "../../.ref/musics/Al Jarreau - We're In This Love Together/mix.mp3"
+        },
+        {
           "name": "other",
           "label": "Other",
           "icon": "🎵",
@@ -423,6 +429,108 @@ window.MANIFEST = {
       "score_mscz": null,
       "score_musicxml": null,
       "score_pdf": null
+    },
+    {
+      "name": "James Brown  - I Feel Good",
+      "stems": [
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/James Brown  - I Feel Good/bass.wav"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/James Brown  - I Feel Good/drums.wav"
+        },
+        {
+          "name": "James Brown  - I Feel Good",
+          "label": "James brown  - i feel good",
+          "icon": "📀",
+          "path": "../../.ref/musics/James Brown  - I Feel Good/James Brown  - I Feel Good.mp3"
+        },
+        {
+          "name": "mix",
+          "label": "Mix",
+          "icon": "📀",
+          "path": "../../.ref/musics/James Brown  - I Feel Good/mix.mp3"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/James Brown  - I Feel Good/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/James Brown  - I Feel Good/piano.wav"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/James Brown  - I Feel Good/vocals.wav"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null,
+      "score_pdf": "../../.ref/musics/James Brown  - I Feel Good/score.pdf",
+      "score_pdf_pages": 2
+    },
+    {
+      "name": "Sheila Majid - Dia",
+      "stems": [
+        {
+          "name": "bass",
+          "label": "Bass",
+          "icon": "🎸",
+          "path": "../../.ref/musics/Sheila Majid - Dia/bass.wav"
+        },
+        {
+          "name": "drums",
+          "label": "Drums",
+          "icon": "🥁",
+          "path": "../../.ref/musics/Sheila Majid - Dia/drums.wav"
+        },
+        {
+          "name": "mix",
+          "label": "Mix",
+          "icon": "📀",
+          "path": "../../.ref/musics/Sheila Majid - Dia/mix.mp3"
+        },
+        {
+          "name": "other",
+          "label": "Other",
+          "icon": "🎵",
+          "path": "../../.ref/musics/Sheila Majid - Dia/other.wav"
+        },
+        {
+          "name": "piano",
+          "label": "Piano",
+          "icon": "🎹",
+          "path": "../../.ref/musics/Sheila Majid - Dia/piano.wav"
+        },
+        {
+          "name": "Sheila Majid - Dia",
+          "label": "Sheila majid - dia",
+          "icon": "📀",
+          "path": "../../.ref/musics/Sheila Majid - Dia/Sheila Majid - Dia.mp3"
+        },
+        {
+          "name": "vocals",
+          "label": "Vocals",
+          "icon": "🎤",
+          "path": "../../.ref/musics/Sheila Majid - Dia/vocals.wav"
+        }
+      ],
+      "score_mscz": "../../.ref/musics/Sheila Majid - Dia/score.mscz",
+      "score_musicxml": null,
+      "score_pdf": "../../.ref/musics/Sheila Majid - Dia/score.pdf",
+      "score_pdf_pages": 3
     },
     {
       "name": "Spyro Gyra - Catching the Sun",
