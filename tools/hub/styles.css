@@ -575,6 +575,34 @@ body {
     flex-shrink: 0;
 }
 
+.player-bulk-controls {
+    display: flex;
+    gap: 8px;
+    padding: 10px 10px 5px;
+    flex-shrink: 0;
+}
+
+.bulk-btn {
+    flex: 1;
+    padding: 6px;
+    background: var(--bg-interactive);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.72em;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: all 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.bulk-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    border-color: var(--border-strong);
+}
+
 .player-tracks {
     flex: 1;
     overflow-y: auto;

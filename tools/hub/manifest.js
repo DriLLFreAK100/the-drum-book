@@ -343,6 +343,130 @@ window.MANIFEST = {
       "score_pdf": null
     },
     {
+      "name": "Dave Weckl - Contemporary Drummer + One [Disc 1]",
+      "stems": [
+        {
+          "name": "01 Garden Wall w drums",
+          "label": "01 garden wall w drums",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 1]/01 Garden Wall w drums.wav"
+        },
+        {
+          "name": "02 Garden Wall",
+          "label": "02 garden wall",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 1]/02 Garden Wall.wav"
+        },
+        {
+          "name": "03 Spur Of The Moment w drums",
+          "label": "03 spur of the moment w drums",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 1]/03 Spur Of The Moment w drums.wav"
+        },
+        {
+          "name": "04 Spur Of The Moment",
+          "label": "04 spur of the moment",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 1]/04 Spur Of The Moment.wav"
+        },
+        {
+          "name": "05 Island Magic w drums",
+          "label": "05 island magic w drums",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 1]/05 Island Magic w drums.wav"
+        },
+        {
+          "name": "06 Island Magic",
+          "label": "06 island magic",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 1]/06 Island Magic.wav"
+        },
+        {
+          "name": "07 Again And Again w drums",
+          "label": "07 again and again w drums",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 1]/07 Again And Again w drums.wav"
+        },
+        {
+          "name": "08 Again And Again",
+          "label": "08 again and again",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 1]/08 Again And Again.wav"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null,
+      "score_pdf": null
+    },
+    {
+      "name": "Dave Weckl - Contemporary Drummer + One [Disc 2]",
+      "stems": [
+        {
+          "name": "01 Rainy Day w drums",
+          "label": "01 rainy day w drums",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 2]/01 Rainy Day w drums.wav"
+        },
+        {
+          "name": "02 Rainy Day",
+          "label": "02 rainy day",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 2]/02 Rainy Day.wav"
+        },
+        {
+          "name": "03 Pretty Girls w drums",
+          "label": "03 pretty girls w drums",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 2]/03 Pretty Girls w drums.wav"
+        },
+        {
+          "name": "04 Pretty Girls",
+          "label": "04 pretty girls",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 2]/04 Pretty Girls.wav"
+        },
+        {
+          "name": "05 Love Me A Little Bit w drums",
+          "label": "05 love me a little bit w drums",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 2]/05 Love Me A Little Bit w drums.wav"
+        },
+        {
+          "name": "06 Love Me A Little Bit",
+          "label": "06 love me a little bit",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 2]/06 Love Me A Little Bit.wav"
+        },
+        {
+          "name": "07 Sports Car Jingle w drums",
+          "label": "07 sports car jingle w drums",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 2]/07 Sports Car Jingle w drums.wav"
+        },
+        {
+          "name": "08 Sports Car Jingle",
+          "label": "08 sports car jingle",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 2]/08 Sports Car Jingle.wav"
+        },
+        {
+          "name": "09 Angle Fire And Through The Lens w drums",
+          "label": "09 angle fire and through the lens w drums",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 2]/09 Angle Fire And Through The Lens w drums.wav"
+        },
+        {
+          "name": "10 Angel Fire And Through The Lens",
+          "label": "10 angel fire and through the lens",
+          "icon": "📀",
+          "path": "../../.ref/musics/Dave Weckl - Contemporary Drummer + One [Disc 2]/10 Angel Fire And Through The Lens.wav"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null,
+      "score_pdf": null
+    },
+    {
       "name": "ETC - I Want to See You in a Negative Light",
       "stems": [
         {
@@ -431,6 +555,1102 @@ window.MANIFEST = {
       "score_pdf": null
     },
     {
+      "name": "Groove Essentials 1.0",
+      "stems": [
+        {
+          "name": "1 Groove 1 Slow",
+          "label": "1 groove 1 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/1 Groove 1 Slow.mp3"
+        },
+        {
+          "name": "2 Groove 1 Fast",
+          "label": "2 groove 1 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/2 Groove 1 Fast.mp3"
+        },
+        {
+          "name": "3 Groove 2 Slow",
+          "label": "3 groove 2 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/3 Groove 2 Slow.mp3"
+        },
+        {
+          "name": "4 Groove 2 Fast",
+          "label": "4 groove 2 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/4 Groove 2 Fast.mp3"
+        },
+        {
+          "name": "5 Groove 3 Slow",
+          "label": "5 groove 3 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/5 Groove 3 Slow.mp3"
+        },
+        {
+          "name": "6 Groove 3 Fast",
+          "label": "6 groove 3 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/6 Groove 3 Fast.mp3"
+        },
+        {
+          "name": "7 Groove 4 Slow",
+          "label": "7 groove 4 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/7 Groove 4 Slow.mp3"
+        },
+        {
+          "name": "8 Groove 4 Fast",
+          "label": "8 groove 4 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/8 Groove 4 Fast.mp3"
+        },
+        {
+          "name": "9 Groove 5 Slow",
+          "label": "9 groove 5 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/9 Groove 5 Slow.mp3"
+        },
+        {
+          "name": "10 Groove 5 Fast",
+          "label": "10 groove 5 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/10 Groove 5 Fast.mp3"
+        },
+        {
+          "name": "11 Groove 6 Slow",
+          "label": "11 groove 6 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/11 Groove 6 Slow.mp3"
+        },
+        {
+          "name": "12 Groove 6 Fast",
+          "label": "12 groove 6 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/12 Groove 6 Fast.mp3"
+        },
+        {
+          "name": "13 Groove 7 Slow",
+          "label": "13 groove 7 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/13 Groove 7 Slow.mp3"
+        },
+        {
+          "name": "14 Groove 7 Fast",
+          "label": "14 groove 7 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/14 Groove 7 Fast.mp3"
+        },
+        {
+          "name": "15 Groove 8 Slow",
+          "label": "15 groove 8 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/15 Groove 8 Slow.mp3"
+        },
+        {
+          "name": "16 Groove 8 Fast",
+          "label": "16 groove 8 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/16 Groove 8 Fast.mp3"
+        },
+        {
+          "name": "17 Groove 9 Slow",
+          "label": "17 groove 9 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/17 Groove 9 Slow.mp3"
+        },
+        {
+          "name": "18 Groove 9 Fast",
+          "label": "18 groove 9 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/18 Groove 9 Fast.mp3"
+        },
+        {
+          "name": "19 Groove 10 Slow",
+          "label": "19 groove 10 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/19 Groove 10 Slow.mp3"
+        },
+        {
+          "name": "20 Groove 10 Fast",
+          "label": "20 groove 10 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/20 Groove 10 Fast.mp3"
+        },
+        {
+          "name": "21 Groove 11 Slow",
+          "label": "21 groove 11 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/21 Groove 11 Slow.mp3"
+        },
+        {
+          "name": "22 Groove 11 Fast",
+          "label": "22 groove 11 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/22 Groove 11 Fast.mp3"
+        },
+        {
+          "name": "23 Groove 12 Slow",
+          "label": "23 groove 12 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/23 Groove 12 Slow.mp3"
+        },
+        {
+          "name": "24 Groove 12 Fast",
+          "label": "24 groove 12 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/24 Groove 12 Fast.mp3"
+        },
+        {
+          "name": "25 Groove 13 Slow",
+          "label": "25 groove 13 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/25 Groove 13 Slow.mp3"
+        },
+        {
+          "name": "26 Groove 13 Fast",
+          "label": "26 groove 13 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/26 Groove 13 Fast.mp3"
+        },
+        {
+          "name": "27 Groove 14 Slow",
+          "label": "27 groove 14 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/27 Groove 14 Slow.mp3"
+        },
+        {
+          "name": "28 Groove 14 Fast",
+          "label": "28 groove 14 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/28 Groove 14 Fast.mp3"
+        },
+        {
+          "name": "29 Groove 15 Slow",
+          "label": "29 groove 15 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/29 Groove 15 Slow.mp3"
+        },
+        {
+          "name": "30 Groove 15 Fast",
+          "label": "30 groove 15 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/30 Groove 15 Fast.mp3"
+        },
+        {
+          "name": "31 Groove 16 Slow",
+          "label": "31 groove 16 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/31 Groove 16 Slow.mp3"
+        },
+        {
+          "name": "32 Groove 16 Fast",
+          "label": "32 groove 16 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/32 Groove 16 Fast.mp3"
+        },
+        {
+          "name": "33 Groove 17 Slow",
+          "label": "33 groove 17 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/33 Groove 17 Slow.mp3"
+        },
+        {
+          "name": "34 Groove 17 Fast",
+          "label": "34 groove 17 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/34 Groove 17 Fast.mp3"
+        },
+        {
+          "name": "35 Groove 18 Slow",
+          "label": "35 groove 18 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/35 Groove 18 Slow.mp3"
+        },
+        {
+          "name": "36 Groove 18 Fast",
+          "label": "36 groove 18 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/36 Groove 18 Fast.mp3"
+        },
+        {
+          "name": "37 Groove 19 Slow",
+          "label": "37 groove 19 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/37 Groove 19 Slow.mp3"
+        },
+        {
+          "name": "38 Groove 19 Fast",
+          "label": "38 groove 19 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/38 Groove 19 Fast.mp3"
+        },
+        {
+          "name": "39 Groove 20 Slow",
+          "label": "39 groove 20 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/39 Groove 20 Slow.mp3"
+        },
+        {
+          "name": "40 Groove 20 Fast",
+          "label": "40 groove 20 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/40 Groove 20 Fast.mp3"
+        },
+        {
+          "name": "41 Groove 21 Slow",
+          "label": "41 groove 21 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/41 Groove 21 Slow.mp3"
+        },
+        {
+          "name": "42 Groove 21 Fast",
+          "label": "42 groove 21 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/42 Groove 21 Fast.mp3"
+        },
+        {
+          "name": "43 Groove 22 Slow",
+          "label": "43 groove 22 slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/43 Groove 22 Slow.mp3"
+        },
+        {
+          "name": "44 Groove 22 Fast",
+          "label": "44 groove 22 fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/44 Groove 22 Fast.mp3"
+        },
+        {
+          "name": "45 Groove 23 (Shuffle) Slow",
+          "label": "45 groove 23 (shuffle) slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/45 Groove 23 (Shuffle) Slow.mp3"
+        },
+        {
+          "name": "46 Groove 23 (Shuffle) Fast",
+          "label": "46 groove 23 (shuffle) fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/46 Groove 23 (Shuffle) Fast.mp3"
+        },
+        {
+          "name": "47 Groove 24 (Swing 2 Feel) Slow",
+          "label": "47 groove 24 (swing 2 feel) slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/47 Groove 24 (Swing 2 Feel) Slow.mp3"
+        },
+        {
+          "name": "48 Groove 24 (Swing 2 Feel) Fast",
+          "label": "48 groove 24 (swing 2 feel) fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/48 Groove 24 (Swing 2 Feel) Fast.mp3"
+        },
+        {
+          "name": "49 Groove 25 (Jazz Waltz in 3) Slow",
+          "label": "49 groove 25 (jazz waltz in 3) slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/49 Groove 25 (Jazz Waltz in 3) Slow.mp3"
+        },
+        {
+          "name": "50 Groove 25 (Jazz Waltz in 3) Fast",
+          "label": "50 groove 25 (jazz waltz in 3) fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/50 Groove 25 (Jazz Waltz in 3) Fast.mp3"
+        },
+        {
+          "name": "51 Groove 26 (Jazz Waltz in 1) Slow",
+          "label": "51 groove 26 (jazz waltz in 1) slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/51 Groove 26 (Jazz Waltz in 1) Slow.mp3"
+        },
+        {
+          "name": "52 Groove 26 (Jazz Waltz in 1) Fast",
+          "label": "52 groove 26 (jazz waltz in 1) fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/52 Groove 26 (Jazz Waltz in 1) Fast.mp3"
+        },
+        {
+          "name": "53 Groove 27 Disco",
+          "label": "53 groove 27 disco",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/53 Groove 27 Disco.mp3"
+        },
+        {
+          "name": "54 Groove 28 (Classic 2-Beat) Slow",
+          "label": "54 groove 28 (classic 2-beat) slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/54 Groove 28 (Classic 2-Beat) Slow.mp3"
+        },
+        {
+          "name": "55 Groove 28 (Classic 2-Beat) Fast",
+          "label": "55 groove 28 (classic 2-beat) fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/55 Groove 28 (Classic 2-Beat) Fast.mp3"
+        },
+        {
+          "name": "56 Groove 29 (New Orleans 2nd Line) Slow",
+          "label": "56 groove 29 (new orleans 2nd line) slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/56 Groove 29 (New Orleans 2nd Line) Slow.mp3"
+        },
+        {
+          "name": "57 Groove 29 (New Orleans 2nd Line) Fast",
+          "label": "57 groove 29 (new orleans 2nd line) fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/57 Groove 29 (New Orleans 2nd Line) Fast.mp3"
+        },
+        {
+          "name": "58 Groove 30 (Reggae) Slow",
+          "label": "58 groove 30 (reggae) slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/58 Groove 30 (Reggae) Slow.mp3"
+        },
+        {
+          "name": "59 Groove 30 (Reggae) Fast",
+          "label": "59 groove 30 (reggae) fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/59 Groove 30 (Reggae) Fast.mp3"
+        },
+        {
+          "name": "60 Groove 31 Calypso",
+          "label": "60 groove 31 calypso",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/60 Groove 31 Calypso.mp3"
+        },
+        {
+          "name": "61 Groove 32 Soca",
+          "label": "61 groove 32 soca",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/61 Groove 32 Soca.mp3"
+        },
+        {
+          "name": "62 Groove 33 Bossa Nova",
+          "label": "62 groove 33 bossa nova",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/62 Groove 33 Bossa Nova.mp3"
+        },
+        {
+          "name": "63 Groove 34 Slow Samba",
+          "label": "63 groove 34 slow samba",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/63 Groove 34 Slow Samba.mp3"
+        },
+        {
+          "name": "64 Groove 34 Medium Samba",
+          "label": "64 groove 34 medium samba",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/64 Groove 34 Medium Samba.mp3"
+        },
+        {
+          "name": "65 Groove 35 Fast Samba",
+          "label": "65 groove 35 fast samba",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/65 Groove 35 Fast Samba.mp3"
+        },
+        {
+          "name": "66 Groove 36 Baião slow",
+          "label": "66 groove 36 baião slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/66 Groove 36 Baião slow.mp3"
+        },
+        {
+          "name": "67 Groove 36 Baião Fast",
+          "label": "67 groove 36 baião fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/67 Groove 36 Baião Fast.mp3"
+        },
+        {
+          "name": "68 Groove 37 Batucada Slow",
+          "label": "68 groove 37 batucada slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/68 Groove 37 Batucada Slow.mp3"
+        },
+        {
+          "name": "69 Groove 37 Batucada Fast",
+          "label": "69 groove 37 batucada fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/69 Groove 37 Batucada Fast.mp3"
+        },
+        {
+          "name": "70 Groove 38 Merengue",
+          "label": "70 groove 38 merengue",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/70 Groove 38 Merengue.mp3"
+        },
+        {
+          "name": "71 Groove 39 Cha-Cha",
+          "label": "71 groove 39 cha-cha",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/71 Groove 39 Cha-Cha.mp3"
+        },
+        {
+          "name": "72 Groove 40 Bolero",
+          "label": "72 groove 40 bolero",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/72 Groove 40 Bolero.mp3"
+        },
+        {
+          "name": "73 Groove 41 Mambo Slow",
+          "label": "73 groove 41 mambo slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/73 Groove 41 Mambo Slow.mp3"
+        },
+        {
+          "name": "74 Groove 41 Mambo Fast",
+          "label": "74 groove 41 mambo fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/74 Groove 41 Mambo Fast.mp3"
+        },
+        {
+          "name": "75 Groove 42 Songo Slow",
+          "label": "75 groove 42 songo slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/75 Groove 42 Songo Slow.mp3"
+        },
+        {
+          "name": "76 Groove 42 Songo Fast",
+          "label": "76 groove 42 songo fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/76 Groove 42 Songo Fast.mp3"
+        },
+        {
+          "name": "77 Groove 43 Nanigo (Afro-Cuban 6_8) Slow",
+          "label": "77 groove 43 nanigo (afro-cuban 6_8) slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/77 Groove 43 Nanigo (Afro-Cuban 6_8) Slow.mp3"
+        },
+        {
+          "name": "78 Groove 43 Nanigo (Afro-Cuban 6_8) Fast",
+          "label": "78 groove 43 nanigo (afro-cuban 6_8) fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/78 Groove 43 Nanigo (Afro-Cuban 6_8) Fast.mp3"
+        },
+        {
+          "name": "79 Groove 44 Mozambique",
+          "label": "79 groove 44 mozambique",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/79 Groove 44 Mozambique.mp3"
+        },
+        {
+          "name": "80 Groove 45 Salsa",
+          "label": "80 groove 45 salsa",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/80 Groove 45 Salsa.mp3"
+        },
+        {
+          "name": "81 Groove 46 Tango",
+          "label": "81 groove 46 tango",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/81 Groove 46 Tango.mp3"
+        },
+        {
+          "name": "82 Groove 47 Beguine",
+          "label": "82 groove 47 beguine",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/82 Groove 47 Beguine.mp3"
+        },
+        {
+          "name": "83 Global Tour #1",
+          "label": "83 global tour #1",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/83 Global Tour #1.mp3"
+        },
+        {
+          "name": "84 Global Tour #2",
+          "label": "84 global tour #2",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/84 Global Tour #2.mp3"
+        },
+        {
+          "name": "85 Global Tour #3",
+          "label": "85 global tour #3",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/85 Global Tour #3.mp3"
+        },
+        {
+          "name": "86 Endure",
+          "label": "86 endure",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/86 Endure.mp3"
+        },
+        {
+          "name": "Chart Talkdown",
+          "label": "Chart talkdown",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/Chart Talkdown.mp3"
+        },
+        {
+          "name": "The 21-Minute Jazz Ramp",
+          "label": "The 21-minute jazz ramp",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 1.0/The 21-Minute Jazz Ramp.mp3"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null,
+      "score_pdf": null
+    },
+    {
+      "name": "Groove Essentials 2.0",
+      "stems": [
+        {
+          "name": "44-Mozambique",
+          "label": "44-mozambique",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/44-Mozambique.mp3"
+        },
+        {
+          "name": "ia 48-slow",
+          "label": "Ia 48-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ia 48-slow.mp3"
+        },
+        {
+          "name": "ib 48-FAST",
+          "label": "Ib 48-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ib 48-FAST.mp3"
+        },
+        {
+          "name": "ic 49 (slow rock ballad)",
+          "label": "Ic 49 (slow rock ballad)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ic 49 (slow rock ballad).mp3"
+        },
+        {
+          "name": "id 50 (groove subtraction)",
+          "label": "Id 50 (groove subtraction)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/id 50 (groove subtraction).mp3"
+        },
+        {
+          "name": "ie 51-slow",
+          "label": "Ie 51-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ie 51-slow.mp3"
+        },
+        {
+          "name": "if 51-FAST",
+          "label": "If 51-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/if 51-FAST.mp3"
+        },
+        {
+          "name": "ig 52-slow",
+          "label": "Ig 52-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ig 52-slow.mp3"
+        },
+        {
+          "name": "ih 52-FAST",
+          "label": "Ih 52-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ih 52-FAST.mp3"
+        },
+        {
+          "name": "ii 53-slow",
+          "label": "Ii 53-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ii 53-slow.mp3"
+        },
+        {
+          "name": "ij 53-FAST",
+          "label": "Ij 53-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ij 53-FAST.mp3"
+        },
+        {
+          "name": "ik 54-slow",
+          "label": "Ik 54-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ik 54-slow.mp3"
+        },
+        {
+          "name": "il 54-FAST",
+          "label": "Il 54-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/il 54-FAST.mp3"
+        },
+        {
+          "name": "im 55 (B.B. on 3)",
+          "label": "Im 55 (b.b. on 3)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/im 55 (B.B. on 3).mp3"
+        },
+        {
+          "name": "in 56 (B.B. on 1)",
+          "label": "In 56 (b.b. on 1)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/in 56 (B.B. on 1).mp3"
+        },
+        {
+          "name": "io 57 (R.W. shuffled)",
+          "label": "Io 57 (r.w. shuffled)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/io 57 (R.W. shuffled).mp3"
+        },
+        {
+          "name": "ip 58-slow",
+          "label": "Ip 58-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ip 58-slow.mp3"
+        },
+        {
+          "name": "iq 58-FAST",
+          "label": "Iq 58-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/iq 58-FAST.mp3"
+        },
+        {
+          "name": "ir 59-slow",
+          "label": "Ir 59-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ir 59-slow.mp3"
+        },
+        {
+          "name": "is 59-FAST",
+          "label": "Is 59-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/is 59-FAST.mp3"
+        },
+        {
+          "name": "it 60-slow",
+          "label": "It 60-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/it 60-slow.mp3"
+        },
+        {
+          "name": "iu 60-FAST",
+          "label": "Iu 60-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/iu 60-FAST.mp3"
+        },
+        {
+          "name": "iv 61 (fast rock shuffle)",
+          "label": "Iv 61 (fast rock shuffle)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/iv 61 (fast rock shuffle).mp3"
+        },
+        {
+          "name": "ja 62-slow",
+          "label": "Ja 62-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ja 62-slow.mp3"
+        },
+        {
+          "name": "jb 62-FAST",
+          "label": "Jb 62-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/jb 62-FAST.mp3"
+        },
+        {
+          "name": "jc 63-slow",
+          "label": "Jc 63-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/jc 63-slow.mp3"
+        },
+        {
+          "name": "jd 63-FAST",
+          "label": "Jd 63-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/jd 63-FAST.mp3"
+        },
+        {
+          "name": "je 64-slow",
+          "label": "Je 64-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/je 64-slow.mp3"
+        },
+        {
+          "name": "jf 64-FAST",
+          "label": "Jf 64-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/jf 64-FAST.mp3"
+        },
+        {
+          "name": "jg 65 (anticipated funk)",
+          "label": "Jg 65 (anticipated funk)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/jg 65 (anticipated funk).mp3"
+        },
+        {
+          "name": "jh 66-slow",
+          "label": "Jh 66-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/jh 66-slow.mp3"
+        },
+        {
+          "name": "ji 66-FAST",
+          "label": "Ji 66-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ji 66-FAST.mp3"
+        },
+        {
+          "name": "jj 67 (busy hands funk)",
+          "label": "Jj 67 (busy hands funk)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/jj 67 (busy hands funk).mp3"
+        },
+        {
+          "name": "ka 68 (gospel 6_8)",
+          "label": "Ka 68 (gospel 6_8)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ka 68 (gospel 6_8).mp3"
+        },
+        {
+          "name": "kb 69-slow",
+          "label": "Kb 69-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/kb 69-slow.mp3"
+        },
+        {
+          "name": "kc 69-FAST",
+          "label": "Kc 69-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/kc 69-FAST.mp3"
+        },
+        {
+          "name": "kd 70 (texas shuffle)",
+          "label": "Kd 70 (texas shuffle)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/kd 70 (texas shuffle).mp3"
+        },
+        {
+          "name": "ke 71 (tight swing r&b)",
+          "label": "Ke 71 (tight swing r&b)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ke 71 (tight swing r&b).mp3"
+        },
+        {
+          "name": "kf 72 (busy hat over half-t",
+          "label": "Kf 72 (busy hat over half-t",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/kf 72 (busy hat over half-t.mp3"
+        },
+        {
+          "name": "kg 73-slow",
+          "label": "Kg 73-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/kg 73-slow.mp3"
+        },
+        {
+          "name": "kh 73-FAST",
+          "label": "Kh 73-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/kh 73-FAST.mp3"
+        },
+        {
+          "name": "ki 74 (backbeat-less)",
+          "label": "Ki 74 (backbeat-less)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ki 74 (backbeat-less).mp3"
+        },
+        {
+          "name": "la 75 (jazz ballad)",
+          "label": "La 75 (jazz ballad)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/la 75 (jazz ballad).mp3"
+        },
+        {
+          "name": "lb 76 (medium brushes)",
+          "label": "Lb 76 (medium brushes)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/lb 76 (medium brushes).mp3"
+        },
+        {
+          "name": "lc 77 (fast brushes)",
+          "label": "Lc 77 (fast brushes)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/lc 77 (fast brushes).mp3"
+        },
+        {
+          "name": "ld 78 (jazz mambo)",
+          "label": "Ld 78 (jazz mambo)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ld 78 (jazz mambo).mp3"
+        },
+        {
+          "name": "le 79 (very fast swing)",
+          "label": "Le 79 (very fast swing)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/le 79 (very fast swing).mp3"
+        },
+        {
+          "name": "ma 80-slow",
+          "label": "Ma 80-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ma 80-slow.mp3"
+        },
+        {
+          "name": "mb 80-FAST",
+          "label": "Mb 80-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/mb 80-FAST.mp3"
+        },
+        {
+          "name": "mc 81-slow",
+          "label": "Mc 81-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/mc 81-slow.mp3"
+        },
+        {
+          "name": "md 81-FAST",
+          "label": "Md 81-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/md 81-FAST.mp3"
+        },
+        {
+          "name": "me 82-slow",
+          "label": "Me 82-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/me 82-slow.mp3"
+        },
+        {
+          "name": "mg 83 (funk samba)",
+          "label": "Mg 83 (funk samba)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/mg 83 (funk samba).mp3"
+        },
+        {
+          "name": "mh 84 (half-time 6_8) 1",
+          "label": "Mh 84 (half-time 6_8) 1",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/mh 84 (half-time 6_8) 1.mp3"
+        },
+        {
+          "name": "mi 85 (bo diddley)",
+          "label": "Mi 85 (bo diddley)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/mi 85 (bo diddley).mp3"
+        },
+        {
+          "name": "mj 86 (train beat)",
+          "label": "Mj 86 (train beat)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/mj 86 (train beat).mp3"
+        },
+        {
+          "name": "mk 87-slow",
+          "label": "Mk 87-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/mk 87-slow.mp3"
+        },
+        {
+          "name": "mm 88-slow",
+          "label": "Mm 88-slow",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/mm 88-slow.mp3"
+        },
+        {
+          "name": "mn 88-FAST",
+          "label": "Mn 88-fast",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/mn 88-FAST.mp3"
+        },
+        {
+          "name": "mo 89 (rideless-linear)",
+          "label": "Mo 89 (rideless-linear)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/mo 89 (rideless-linear).mp3"
+        },
+        {
+          "name": "mp 90 (military cadence)",
+          "label": "Mp 90 (military cadence)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/mp 90 (military cadence).mp3"
+        },
+        {
+          "name": "na 91 (funk in 3) 1",
+          "label": "Na 91 (funk in 3) 1",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/na 91 (funk in 3) 1.mp3"
+        },
+        {
+          "name": "nb 92 (basic 5)",
+          "label": "Nb 92 (basic 5)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/nb 92 (basic 5).mp3"
+        },
+        {
+          "name": "nc 93 (intermediate 5)",
+          "label": "Nc 93 (intermediate 5)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/nc 93 (intermediate 5).mp3"
+        },
+        {
+          "name": "nd 94 (advanced 5)",
+          "label": "Nd 94 (advanced 5)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/nd 94 (advanced 5).mp3"
+        },
+        {
+          "name": "ne 95 (basic 7) 1",
+          "label": "Ne 95 (basic 7) 1",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ne 95 (basic 7) 1.mp3"
+        },
+        {
+          "name": "nf 96 (intermediate 7)",
+          "label": "Nf 96 (intermediate 7)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/nf 96 (intermediate 7).mp3"
+        },
+        {
+          "name": "ng 97 (advanced 7) 1",
+          "label": "Ng 97 (advanced 7) 1",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ng 97 (advanced 7) 1.mp3"
+        },
+        {
+          "name": "nh 98 (basic 9)",
+          "label": "Nh 98 (basic 9)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/nh 98 (basic 9).mp3"
+        },
+        {
+          "name": "ni 99 (intermediate 9)",
+          "label": "Ni 99 (intermediate 9)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ni 99 (intermediate 9).mp3"
+        },
+        {
+          "name": "nj 100 (advanced 9)",
+          "label": "Nj 100 (advanced 9)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/nj 100 (advanced 9).mp3"
+        },
+        {
+          "name": "oa Global Tour #5",
+          "label": "Oa global tour #5",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/oa Global Tour #5.mp3"
+        },
+        {
+          "name": "ob Global Tour #6",
+          "label": "Ob global tour #6",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ob Global Tour #6.mp3"
+        },
+        {
+          "name": "oc Global Tour #7",
+          "label": "Oc global tour #7",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/oc Global Tour #7.mp3"
+        },
+        {
+          "name": "od Gl. Tour #8 (no drums)",
+          "label": "Od gl. tour #8 (no drums)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/od Gl. Tour #8 (no drums).mp3"
+        },
+        {
+          "name": "pa 62 slowly with counting",
+          "label": "Pa 62 slowly with counting",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pa 62 slowly with counting.mp3"
+        },
+        {
+          "name": "pb 65 slowly with counting",
+          "label": "Pb 65 slowly with counting",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pb 65 slowly with counting.mp3"
+        },
+        {
+          "name": "pc 69 slowly with counting",
+          "label": "Pc 69 slowly with counting",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pc 69 slowly with counting.mp3"
+        },
+        {
+          "name": "pd 84 slowly with counting",
+          "label": "Pd 84 slowly with counting",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pd 84 slowly with counting.mp3"
+        },
+        {
+          "name": "pe 93 slowly with counting",
+          "label": "Pe 93 slowly with counting",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pe 93 slowly with counting.mp3"
+        },
+        {
+          "name": "pf 94 slowly with counting",
+          "label": "Pf 94 slowly with counting",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pf 94 slowly with counting.mp3"
+        },
+        {
+          "name": "pg 96 slowly with counting",
+          "label": "Pg 96 slowly with counting",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pg 96 slowly with counting.mp3"
+        },
+        {
+          "name": "ph 97 slowly with counting",
+          "label": "Ph 97 slowly with counting",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/ph 97 slowly with counting.mp3"
+        },
+        {
+          "name": "pi 99 slowly with counting",
+          "label": "Pi 99 slowly with counting",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pi 99 slowly with counting.mp3"
+        },
+        {
+          "name": "pj 100 slowly with counting",
+          "label": "Pj 100 slowly with counting",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pj 100 slowly with counting.mp3"
+        },
+        {
+          "name": "pk 92 song (with counting)",
+          "label": "Pk 92 song (with counting)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pk 92 song (with counting).mp3"
+        },
+        {
+          "name": "pl 95 song (with counting)",
+          "label": "Pl 95 song (with counting)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pl 95 song (with counting).mp3"
+        },
+        {
+          "name": "pm 98 song (with counting)",
+          "label": "Pm 98 song (with counting)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pm 98 song (with counting).mp3"
+        },
+        {
+          "name": "pn 82-FAST (letter C)",
+          "label": "Pn 82-fast (letter c)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pn 82-FAST (letter C).mp3"
+        },
+        {
+          "name": "po Gl. Tour #8 (with drums)",
+          "label": "Po gl. tour #8 (with drums)",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/po Gl. Tour #8 (with drums).mp3"
+        },
+        {
+          "name": "pp Ghost_Grace discussion",
+          "label": "Pp ghost_grace discussion",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pp Ghost_Grace discussion.mp3"
+        },
+        {
+          "name": "pq Guaguanco breakdown",
+          "label": "Pq guaguanco breakdown",
+          "icon": "📀",
+          "path": "../../.ref/musics/Groove Essentials 2.0/pq Guaguanco breakdown.mp3"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null,
+      "score_pdf": null
+    },
+    {
       "name": "James Brown  - I Feel Good",
       "stems": [
         {
@@ -476,7 +1696,7 @@ window.MANIFEST = {
           "path": "../../.ref/musics/James Brown  - I Feel Good/vocals.wav"
         }
       ],
-      "score_mscz": null,
+      "score_mscz": "../../.ref/musics/James Brown  - I Feel Good/score.mscz",
       "score_musicxml": null,
       "score_pdf": "../../.ref/musics/James Brown  - I Feel Good/score.pdf",
       "score_pdf_pages": 2
@@ -614,6 +1834,626 @@ window.MANIFEST = {
           "label": "Vocals",
           "icon": "🎤",
           "path": "../../.ref/musics/Spyro Gyra - Morning Dance/vocals.wav"
+        }
+      ],
+      "score_mscz": null,
+      "score_musicxml": null,
+      "score_pdf": null
+    },
+    {
+      "name": "The Drummer's Play-Along (Cristiano Micalizzi)",
+      "stems": [
+        {
+          "name": "01 Example 1_Dynamic Markings",
+          "label": "01 example 1_dynamic markings",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/01 Example 1_Dynamic Markings.mp3"
+        },
+        {
+          "name": "02 Example 2_Crescendo and Diminuendo",
+          "label": "02 example 2_crescendo and diminuendo",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/02 Example 2_Crescendo and Diminuendo.mp3"
+        },
+        {
+          "name": "03 Example 3_Repetition of the Previous Bar",
+          "label": "03 example 3_repetition of the previous bar",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/03 Example 3_Repetition of the Previous Bar.mp3"
+        },
+        {
+          "name": "04 Examples 4 and 5_Repetition of the 2 Previous Bars and th",
+          "label": "04 examples 4 and 5_repetition of the 2 previous bars and th",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/04 Examples 4 and 5_Repetition of the 2 Previous Bars and th.mp3"
+        },
+        {
+          "name": "05 Example 6_Repeat Brackets",
+          "label": "05 example 6_repeat brackets",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/05 Example 6_Repeat Brackets.mp3"
+        },
+        {
+          "name": "06 Example 7_Repeat with Different Endings",
+          "label": "06 example 7_repeat with different endings",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/06 Example 7_Repeat with Different Endings.mp3"
+        },
+        {
+          "name": "07 Example 8_Number of Repetitions",
+          "label": "07 example 8_number of repetitions",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/07 Example 8_Number of Repetitions.mp3"
+        },
+        {
+          "name": "08 Example 9_Open Repeats and On Cue Signal",
+          "label": "08 example 9_open repeats and on cue signal",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/08 Example 9_Open Repeats and On Cue Signal.mp3"
+        },
+        {
+          "name": "09 Examples 10 and 11_Double Time and Half Time",
+          "label": "09 examples 10 and 11_double time and half time",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/09 Examples 10 and 11_Double Time and Half Time.mp3"
+        },
+        {
+          "name": "10 Examples 12 and 13_Double-Time Feel and Half-Time Feel",
+          "label": "10 examples 12 and 13_double-time feel and half-time feel",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/10 Examples 12 and 13_Double-Time Feel and Half-Time Feel.mp3"
+        },
+        {
+          "name": "11 Examples 14 and 15_Accelerando and Ritardando",
+          "label": "11 examples 14 and 15_accelerando and ritardando",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/11 Examples 14 and 15_Accelerando and Ritardando.mp3"
+        },
+        {
+          "name": "12 Example 16_Fill",
+          "label": "12 example 16_fill",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/12 Example 16_Fill.mp3"
+        },
+        {
+          "name": "13 Example 17_Solo",
+          "label": "13 example 17_solo",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/13 Example 17_Solo.mp3"
+        },
+        {
+          "name": "14 Example 18_Tacet",
+          "label": "14 example 18_tacet",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/14 Example 18_Tacet.mp3"
+        },
+        {
+          "name": "15 Example 19_Swing in 2 and in 4",
+          "label": "15 example 19_swing in 2 and in 4",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/15 Example 19_Swing in 2 and in 4.mp3"
+        },
+        {
+          "name": "16 Example 20_Rhythmic Figure with Eighth Notes",
+          "label": "16 example 20_rhythmic figure with eighth notes",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/16 Example 20_Rhythmic Figure with Eighth Notes.mp3"
+        },
+        {
+          "name": "17 Example 21_Rhythmic Figure with Sixteenth Notes",
+          "label": "17 example 21_rhythmic figure with sixteenth notes",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/17 Example 21_Rhythmic Figure with Sixteenth Notes.mp3"
+        },
+        {
+          "name": "18 Example 22_Ensemble and Section Figures Interpretation",
+          "label": "18 example 22_ensemble and section figures interpretation",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/18 Example 22_Ensemble and Section Figures Interpretation.mp3"
+        },
+        {
+          "name": "19 Example 23_Medium Rock Rhythmic Figure Interpretation",
+          "label": "19 example 23_medium rock rhythmic figure interpretation",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/19 Example 23_Medium Rock Rhythmic Figure Interpretation.mp3"
+        },
+        {
+          "name": "20 Example 24_Medium Funk Rhythmic Figure Interpretation",
+          "label": "20 example 24_medium funk rhythmic figure interpretation",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/20 Example 24_Medium Funk Rhythmic Figure Interpretation.mp3"
+        },
+        {
+          "name": "21 Example 25_Medium Swing Rhythmic Figure Interpretation",
+          "label": "21 example 25_medium swing rhythmic figure interpretation",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/21 Example 25_Medium Swing Rhythmic Figure Interpretation.mp3"
+        },
+        {
+          "name": "22 Example 26_Medium Latin Rhythmic Figure Interpretation",
+          "label": "22 example 26_medium latin rhythmic figure interpretation",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/22 Example 26_Medium Latin Rhythmic Figure Interpretation.mp3"
+        },
+        {
+          "name": "23 ROCK 1 Performance",
+          "label": "23 rock 1 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/23 ROCK 1 Performance.mp3"
+        },
+        {
+          "name": "24 ROCK 1 Play-Along",
+          "label": "24 rock 1 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/24 ROCK 1 Play-Along.mp3"
+        },
+        {
+          "name": "25 ROCK 2 Performance",
+          "label": "25 rock 2 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/25 ROCK 2 Performance.mp3"
+        },
+        {
+          "name": "26 ROCK 2 Play-Along",
+          "label": "26 rock 2 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/26 ROCK 2 Play-Along.mp3"
+        },
+        {
+          "name": "27 ROCK 3 Performance",
+          "label": "27 rock 3 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/27 ROCK 3 Performance.mp3"
+        },
+        {
+          "name": "28 ROCK 3 Play-Along",
+          "label": "28 rock 3 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/28 ROCK 3 Play-Along.mp3"
+        },
+        {
+          "name": "29 ROCK 4 Performance",
+          "label": "29 rock 4 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/29 ROCK 4 Performance.mp3"
+        },
+        {
+          "name": "30 ROCK 4 Play-Along",
+          "label": "30 rock 4 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/30 ROCK 4 Play-Along.mp3"
+        },
+        {
+          "name": "31 RHYTHM & BLUES 1 Performance",
+          "label": "31 rhythm & blues 1 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/31 RHYTHM & BLUES 1 Performance.mp3"
+        },
+        {
+          "name": "32 RHYTHM & BLUES 1 Play-Along",
+          "label": "32 rhythm & blues 1 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/32 RHYTHM & BLUES 1 Play-Along.mp3"
+        },
+        {
+          "name": "33 RHYTHM & BLUES 2 Performance",
+          "label": "33 rhythm & blues 2 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/33 RHYTHM & BLUES 2 Performance.mp3"
+        },
+        {
+          "name": "34 RHYTHM & BLUES 2 Play-Along",
+          "label": "34 rhythm & blues 2 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/34 RHYTHM & BLUES 2 Play-Along.mp3"
+        },
+        {
+          "name": "35 RHYTHM & BLUES 3 Performance",
+          "label": "35 rhythm & blues 3 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/35 RHYTHM & BLUES 3 Performance.mp3"
+        },
+        {
+          "name": "36 RHYTHM & BLUES 3 Play-Along",
+          "label": "36 rhythm & blues 3 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/36 RHYTHM & BLUES 3 Play-Along.mp3"
+        },
+        {
+          "name": "37 RHYTHM & BLUES 4 Performance",
+          "label": "37 rhythm & blues 4 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/37 RHYTHM & BLUES 4 Performance.mp3"
+        },
+        {
+          "name": "38 RHYTHM & BLUES 4 Play-Along",
+          "label": "38 rhythm & blues 4 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/38 RHYTHM & BLUES 4 Play-Along.mp3"
+        },
+        {
+          "name": "39 FUNK 1 Performance",
+          "label": "39 funk 1 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/39 FUNK 1 Performance.mp3"
+        },
+        {
+          "name": "40 FUNK 1 Play-Along",
+          "label": "40 funk 1 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/40 FUNK 1 Play-Along.mp3"
+        },
+        {
+          "name": "41 FUNK 2 Performance",
+          "label": "41 funk 2 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/41 FUNK 2 Performance.mp3"
+        },
+        {
+          "name": "42 FUNK 2 Play-Along",
+          "label": "42 funk 2 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/42 FUNK 2 Play-Along.mp3"
+        },
+        {
+          "name": "43 FUNK 3 Performance",
+          "label": "43 funk 3 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/43 FUNK 3 Performance.mp3"
+        },
+        {
+          "name": "44 FUNK 3 Play-Along",
+          "label": "44 funk 3 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/44 FUNK 3 Play-Along.mp3"
+        },
+        {
+          "name": "45 FUNK 4 Performance",
+          "label": "45 funk 4 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/45 FUNK 4 Performance.mp3"
+        },
+        {
+          "name": "46 FUNK 4 Play-Along",
+          "label": "46 funk 4 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/46 FUNK 4 Play-Along.mp3"
+        },
+        {
+          "name": "47 BLUES 1 Performance",
+          "label": "47 blues 1 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/47 BLUES 1 Performance.mp3"
+        },
+        {
+          "name": "48 BLUES 1 Play-Along",
+          "label": "48 blues 1 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/48 BLUES 1 Play-Along.mp3"
+        },
+        {
+          "name": "49 BLUES 2 Performance",
+          "label": "49 blues 2 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/49 BLUES 2 Performance.mp3"
+        },
+        {
+          "name": "50 BLUES 2 Play-Along",
+          "label": "50 blues 2 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/50 BLUES 2 Play-Along.mp3"
+        },
+        {
+          "name": "51 BLUES 3 Performance",
+          "label": "51 blues 3 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/51 BLUES 3 Performance.mp3"
+        },
+        {
+          "name": "52 BLUES 3 Play-Along",
+          "label": "52 blues 3 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/52 BLUES 3 Play-Along.mp3"
+        },
+        {
+          "name": "53 BLUES 4 Performance",
+          "label": "53 blues 4 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/53 BLUES 4 Performance.mp3"
+        },
+        {
+          "name": "54 BLUES 4 Play-Along",
+          "label": "54 blues 4 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/54 BLUES 4 Play-Along.mp3"
+        },
+        {
+          "name": "55 JAZZ 1 Performance",
+          "label": "55 jazz 1 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/55 JAZZ 1 Performance.mp3"
+        },
+        {
+          "name": "56 JAZZ 1 Play-Along",
+          "label": "56 jazz 1 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/56 JAZZ 1 Play-Along.mp3"
+        },
+        {
+          "name": "57 JAZZ 2 Performance",
+          "label": "57 jazz 2 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/57 JAZZ 2 Performance.mp3"
+        },
+        {
+          "name": "58 JAZZ 2 Play-Along",
+          "label": "58 jazz 2 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/58 JAZZ 2 Play-Along.mp3"
+        },
+        {
+          "name": "59 JAZZ 3 Performance",
+          "label": "59 jazz 3 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/59 JAZZ 3 Performance.mp3"
+        },
+        {
+          "name": "60 JAZZ 3 Play-Along",
+          "label": "60 jazz 3 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/60 JAZZ 3 Play-Along.mp3"
+        },
+        {
+          "name": "61 JAZZ 4 Performance",
+          "label": "61 jazz 4 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/61 JAZZ 4 Performance.mp3"
+        },
+        {
+          "name": "62 JAZZ 4 Play-Along",
+          "label": "62 jazz 4 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/62 JAZZ 4 Play-Along.mp3"
+        },
+        {
+          "name": "63 BRAZILIAN 1 Performance",
+          "label": "63 brazilian 1 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/63 BRAZILIAN 1 Performance.mp3"
+        },
+        {
+          "name": "64 BRAZILIAN 1 Play-Along",
+          "label": "64 brazilian 1 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/64 BRAZILIAN 1 Play-Along.mp3"
+        },
+        {
+          "name": "65 BRAZILIAN 2 Performance",
+          "label": "65 brazilian 2 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/65 BRAZILIAN 2 Performance.mp3"
+        },
+        {
+          "name": "66 BRAZILIAN 2 Play-Along",
+          "label": "66 brazilian 2 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/66 BRAZILIAN 2 Play-Along.mp3"
+        },
+        {
+          "name": "67 BRAZILIAN 3 Performance",
+          "label": "67 brazilian 3 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/67 BRAZILIAN 3 Performance.mp3"
+        },
+        {
+          "name": "68 BRAZILIAN 3 Play-Along",
+          "label": "68 brazilian 3 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/68 BRAZILIAN 3 Play-Along.mp3"
+        },
+        {
+          "name": "69 BRAZILIAN 4 Performance",
+          "label": "69 brazilian 4 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/69 BRAZILIAN 4 Performance.mp3"
+        },
+        {
+          "name": "70 BRAZILIAN 4 Play-Along",
+          "label": "70 brazilian 4 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/70 BRAZILIAN 4 Play-Along.mp3"
+        },
+        {
+          "name": "71 AFRO-CUBAN 1 Performance",
+          "label": "71 afro-cuban 1 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/71 AFRO-CUBAN 1 Performance.mp3"
+        },
+        {
+          "name": "72 AFRO-CUBAN 1 Play-Along",
+          "label": "72 afro-cuban 1 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/72 AFRO-CUBAN 1 Play-Along.mp3"
+        },
+        {
+          "name": "73 AFRO-CUBAN 2 Performance",
+          "label": "73 afro-cuban 2 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/73 AFRO-CUBAN 2 Performance.mp3"
+        },
+        {
+          "name": "74 AFRO-CUBAN 2 Play-Along",
+          "label": "74 afro-cuban 2 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/74 AFRO-CUBAN 2 Play-Along.mp3"
+        },
+        {
+          "name": "75 AFRO-CUBAN 3 Performance",
+          "label": "75 afro-cuban 3 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/75 AFRO-CUBAN 3 Performance.mp3"
+        },
+        {
+          "name": "76 AFRO-CUBAN 3 Play-Along",
+          "label": "76 afro-cuban 3 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/76 AFRO-CUBAN 3 Play-Along.mp3"
+        },
+        {
+          "name": "77 AFRO-CUBAN 4 Performance",
+          "label": "77 afro-cuban 4 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/77 AFRO-CUBAN 4 Performance.mp3"
+        },
+        {
+          "name": "78 AFRO-CUBAN 4 Play-Along",
+          "label": "78 afro-cuban 4 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/78 AFRO-CUBAN 4 Play-Along.mp3"
+        },
+        {
+          "name": "79 AFRO-CUBAN 5 Performance",
+          "label": "79 afro-cuban 5 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/79 AFRO-CUBAN 5 Performance.mp3"
+        },
+        {
+          "name": "80 AFRO-CUBAN 5 Play-Along",
+          "label": "80 afro-cuban 5 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/80 AFRO-CUBAN 5 Play-Along.mp3"
+        },
+        {
+          "name": "81 REGGAE 1 Performance",
+          "label": "81 reggae 1 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/81 REGGAE 1 Performance.mp3"
+        },
+        {
+          "name": "82 REGGAE 1 Play-Along",
+          "label": "82 reggae 1 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/82 REGGAE 1 Play-Along.mp3"
+        },
+        {
+          "name": "83 REGGAE 2 Performance",
+          "label": "83 reggae 2 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/83 REGGAE 2 Performance.mp3"
+        },
+        {
+          "name": "84 REGGAE 2 Play-Along",
+          "label": "84 reggae 2 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/84 REGGAE 2 Play-Along.mp3"
+        },
+        {
+          "name": "85 REGGAE 3 Performance",
+          "label": "85 reggae 3 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/85 REGGAE 3 Performance.mp3"
+        },
+        {
+          "name": "86 REGGAE 3 Play-Along",
+          "label": "86 reggae 3 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/86 REGGAE 3 Play-Along.mp3"
+        },
+        {
+          "name": "87 FUSION 1 Performance",
+          "label": "87 fusion 1 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/87 FUSION 1 Performance.mp3"
+        },
+        {
+          "name": "88 FUSION 1 Play-Along",
+          "label": "88 fusion 1 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/88 FUSION 1 Play-Along.mp3"
+        },
+        {
+          "name": "89 FUSION 2 Performance",
+          "label": "89 fusion 2 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/89 FUSION 2 Performance.mp3"
+        },
+        {
+          "name": "90 FUSION 2 Play-Along",
+          "label": "90 fusion 2 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/90 FUSION 2 Play-Along.mp3"
+        },
+        {
+          "name": "91 FUSION 3 Performance",
+          "label": "91 fusion 3 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/91 FUSION 3 Performance.mp3"
+        },
+        {
+          "name": "92 FUSION 3 Play-Along",
+          "label": "92 fusion 3 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/92 FUSION 3 Play-Along.mp3"
+        },
+        {
+          "name": "93 FUSION 4 Performance",
+          "label": "93 fusion 4 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/93 FUSION 4 Performance.mp3"
+        },
+        {
+          "name": "94 FUSION 4 Play-Along",
+          "label": "94 fusion 4 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/94 FUSION 4 Play-Along.mp3"
+        },
+        {
+          "name": "95 FUSION 5 Performance",
+          "label": "95 fusion 5 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/95 FUSION 5 Performance.mp3"
+        },
+        {
+          "name": "96 FUSION 5 Play-Along",
+          "label": "96 fusion 5 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/96 FUSION 5 Play-Along.mp3"
+        },
+        {
+          "name": "97 FUSION 6 Performance",
+          "label": "97 fusion 6 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/97 FUSION 6 Performance.mp3"
+        },
+        {
+          "name": "98 FUSION 6 Play-Along",
+          "label": "98 fusion 6 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/98 FUSION 6 Play-Along.mp3"
+        },
+        {
+          "name": "99 FUSION 7 Performance",
+          "label": "99 fusion 7 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/99 FUSION 7 Performance.mp3"
+        },
+        {
+          "name": "100 FUSION 7 Play-Along",
+          "label": "100 fusion 7 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/100 FUSION 7 Play-Along.mp3"
+        },
+        {
+          "name": "101 FUSION 8 Performance",
+          "label": "101 fusion 8 performance",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/101 FUSION 8 Performance.mp3"
+        },
+        {
+          "name": "102 FUSION 8 Play-Along",
+          "label": "102 fusion 8 play-along",
+          "icon": "📀",
+          "path": "../../.ref/musics/The Drummer's Play-Along (Cristiano Micalizzi)/102 FUSION 8 Play-Along.mp3"
         }
       ],
       "score_mscz": null,

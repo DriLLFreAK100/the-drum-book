@@ -751,10 +751,12 @@ function loadTune(tune, _skipUrlState) {
   const loadingEl = document.getElementById('playerLoading');
   const tracksEl = document.getElementById('playerTracks');
   const transportEl = document.getElementById('playerTransport');
+  const bulkControlsEl = document.getElementById('playerBulkControls');
 
   tracksEl.innerHTML = '';
   transportEl.classList.add('disabled');
   loadingEl.style.display = 'block';
+  bulkControlsEl.style.display = 'none';
 
   const stems = tune.stems || [];
   if (stems.length === 0) {
@@ -783,6 +785,7 @@ function loadTune(tune, _skipUrlState) {
       if (loadedCount === stems.length || loadedCount === 1) {
         // Enable transport as soon as at least one stem is ready
         loadingEl.style.display = 'none';
+        bulkControlsEl.style.display = 'flex';
         const seekEl = document.getElementById('transportSeek');
         seekEl.max = playerDuration > 0 ? playerDuration : 100;
         seekEl.value = 0;
@@ -869,6 +872,28 @@ function buildTrackToggle(stem) {
   return el;
 }
 
+function toggleAllTracks(enabled) {
+  Object.keys(stemEnabled).forEach(label => {
+    stemEnabled[label] = enabled;
+    const audio = stemAudios[label];
+    if (audio) audio.volume = enabled ? masterVolume : 0;
+
+    // Update UI
+    const trackEl = document.getElementById('playerTracks')
+      .querySelector(`.player-track[data-label="${CSS.escape(label)}"]`);
+    if (trackEl) {
+      trackEl.classList.toggle('active', enabled);
+      const toggleBtn = trackEl.querySelector('.track-toggle-btn');
+      if (toggleBtn) {
+        toggleBtn.textContent = enabled ? '✓' : '✗';
+        toggleBtn.setAttribute('aria-pressed', String(enabled));
+      }
+    }
+  });
+  // Persist stem states
+  urlStateSet({ player: { stems: Object.assign({}, stemEnabled) } });
+}
+
 function seekAllTo(t) {
   Object.values(stemAudios).forEach(a => { try { a.currentTime = t; } catch { } });
 }
@@ -908,6 +933,8 @@ function clearPlayerState() {
   playerDuration = 0;
   isPlaying = false;
   leaderLabel = null;
+  const bulkControlsEl = document.getElementById('playerBulkControls');
+  if (bulkControlsEl) bulkControlsEl.style.display = 'none';
 }
 
 function getCurrentPosition() {
@@ -965,6 +992,9 @@ function updateSeekUI(pos) {
 function setupPlayer() {
   // Start in disabled state until a tune is loaded
   document.getElementById('playerTransport').classList.add('disabled');
+
+  document.getElementById('selectAllBtn').addEventListener('click', () => toggleAllTracks(true));
+  document.getElementById('unselectAllBtn').addEventListener('click', () => toggleAllTracks(false));
 
   document.getElementById('playPauseBtn').addEventListener('click', () => {
     if (Object.keys(stemAudios).length === 0) return;
