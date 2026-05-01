@@ -541,17 +541,24 @@ async function _drawPdfPages(pdf, container, token) {
     pageWrapper.className = 'score-page pdf-page';
     pageWrapper.style.marginBottom = '8px';
 
+    const dpr = window.devicePixelRatio || 1;
     const canvas = document.createElement('canvas');
-    canvas.width = Math.floor(scaledViewport.width);
-    canvas.height = Math.floor(scaledViewport.height);
+    canvas.width = Math.floor(scaledViewport.width * dpr);
+    canvas.height = Math.floor(scaledViewport.height * dpr);
     canvas.style.display = 'block';
-    canvas.style.width = canvas.width + 'px';
-    canvas.style.height = canvas.height + 'px';
+    canvas.style.width = Math.floor(scaledViewport.width) + 'px';
+    canvas.style.height = Math.floor(scaledViewport.height) + 'px';
 
     pageWrapper.appendChild(canvas);
     container.appendChild(pageWrapper);
 
-    await page.render({ canvasContext: canvas.getContext('2d'), viewport: scaledViewport }).promise;
+    const ctx = canvas.getContext('2d');
+    const renderContext = {
+      canvasContext: ctx,
+      viewport: scaledViewport,
+      transform: [dpr, 0, 0, dpr, 0, 0]
+    };
+    await page.render(renderContext).promise;
   }
 }
 
